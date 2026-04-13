@@ -1,0 +1,44 @@
+[
+    {
+        "title": "SIAKAD RASDA",
+        "description": "Academic Information System of Saraswati 2 Denpasar Elementary School Based on Website Using Laravel Framework as Final Project of ITB STIKOM Bali.",
+        "image": "",
+        "link": ""
+    },
+    {
+        "title": "InventoriKu",
+        "description": "Simple inventory website built using Laravel framework.",
+        "image": "",
+        "link": ""
+    },
+    {
+        "title": "EyeOn Scan",
+        "description": "Simple Optical Character Recognition (OCR) website using Tesseract library.",
+        "image": "",
+        "link": "https://eyeon-scan.vercel.app/"
+    },
+    {
+        "title": "EyeOn AI",
+        "description": "Simple chatAI website using Google Gemini 2.0 Flash model from OpenRouter API.",
+        "image": "",
+        "link": ""
+    },
+    {
+        "title": "EyeOn Forum",
+        "description": "Simple chat room using Firebase Realtime Database.",
+        "image": "/images/projects_screenshot/eyeon_forum.png",
+        "link": "https://eyeonforum-dfdc2.web.app"
+    },
+    {
+        "title": "EyeOn Weather",
+        "description": "Simple weather forecast website using OpenWeatherMap API.",
+        "image": "",
+        "link": "https://eyeonweather-fdbc1.web.app"
+    },
+    {
+        "title": "Generate Recipe",
+        "description": "Simple recipe generator website using Deepseek v3.1 model from OpenRouter API.",
+        "image": "",
+        "link": "https://generate-recipe.vercel.app"
+    }
+]

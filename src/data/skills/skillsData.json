@@ -1,0 +1,72 @@
+[
+    {
+        "name": "html5",
+        "variant": "light",
+        "label": "HTML"
+    },
+    {
+        "name": "css3",
+        "variant": "light",
+        "label": "CSS"
+    },
+    {
+        "name": "js",
+        "variant": "light",
+        "label": "JavaScript"
+    },
+    {
+        "name": "typescript",
+        "variant": "light",
+        "label": "TypeScript"
+    },
+    {
+        "name": "bootstrap5",
+        "variant": "light",
+        "label": "Bootstrap"
+    },
+    {
+        "name": "tailwindcss",
+        "variant": "light",
+        "label": "Tailwind"
+    },
+    {
+        "name": "react",
+        "variant": "light",
+        "label": "React.js"
+    },
+    {
+        "name": "vuejs",
+        "variant": "light",
+        "label": "Vue.js"
+    },
+    {
+        "name": "nextjs",
+        "variant": "dark",
+        "label": "Next.js"
+    },
+    {
+        "name": "expressjs",
+        "variant": "dark",
+        "label": "Express.js"
+    },
+    {
+        "name": "php",
+        "variant": "light",
+        "label": "PHP"
+    },
+    {
+        "name": "laravel",
+        "variant": "light",
+        "label": "Laravel"
+    },
+    {
+        "name": "mysql",
+        "variant": "light",
+        "label": "MySQL"
+    },
+    {
+        "name": "firebase",
+        "variant": "light",
+        "label": "Firebase"
+    }
+]
