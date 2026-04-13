@@ -39,7 +39,7 @@ const ProjectCard: React.FC<Project> = ({
                         href={link} 
                         target="_blank" 
                         rel="noopener noreferrer"
-                        className="inline-block bg-[rgb(1,57,211)] py-2 px-4 rounded-full hover:bg-blue-700 transition-colors duration-300 ease-in-out"
+                        className="inline-block bg-[rgb(1,57,211)] mr-2 py-2 px-4 rounded-full hover:bg-blue-700 transition-colors duration-300 ease-in-out"
                     >
                         Visit
                     </a>
