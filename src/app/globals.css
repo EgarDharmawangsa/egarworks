@@ -3,7 +3,7 @@
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
 
-@custom-variant dark (&:is(.dark *));
+/* @custom-variant dark (&:is(.dark *)); */
 
 * {
   scroll-behavior: smooth;
@@ -20,7 +20,7 @@
   }
 }
 
-@theme inline {
+/* @theme inline {
   --font-heading: var(--font-sans);
   --font-sans: var(--font-sans);
   --color-sidebar-ring: var(--sidebar-ring);
@@ -142,4 +142,4 @@
   html {
     @apply font-sans;
   }
-}
+} */

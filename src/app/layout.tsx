@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Inter } from "next/font/google";
 import AOSProvider from "./AOSProvider";
-import CursorWrapper from "@/components/cursor";
+import DotPattern from "@/components/ui/dot-pattern";
 import Navbar from "@/components/navbar";
+import Footer from "@/components/footer";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 
@@ -29,12 +30,14 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       lang="en"
       className={cn("h-full", "antialiased", geistSans.variable, geistMono.variable, "font-sans", inter.variable)}
     >
-      <body className="min-h-full flex flex-col m-0 p-0 bg-black">
+      <body className="m-0 p-0 relative">
+        <DotPattern />
         <AOSProvider>
-          <CursorWrapper />
           <Navbar />
           {children}
         </AOSProvider>
+        <Footer />
+        <div className="absolute -z-50 bottom-0 w-full h-[30rem] bg-gradient-to-t from-[rgb(0,13,36)] to-[rgba(0,30,80,0)]"></div>
       </body>
     </html>
   );

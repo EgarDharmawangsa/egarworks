@@ -17,7 +17,7 @@ const contactData: Contact[] = [
 
 const Contact: React.FC = () => {
     return (
-        <div className="bg-[rgba(10,10,10,0.5)] backdrop-blur-md border-t border-t-[#27272a] text-white py-10 px-6 lg:px-24 mt-6" id="contact">
+        <div className="text-white py-10 px-6 lg:px-24 mt-6" id="contact">
             <h2 className="mb-10 font-bold text-3xl text-center">Contact.</h2>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
