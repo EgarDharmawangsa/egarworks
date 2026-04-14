@@ -17,17 +17,17 @@ const ProjectCard: React.FC<Project> = ({
 }) => {
     return (
         <div data-aos="fade-up">
-            <div className="border border-[#27272a] hover:border-[#4b5563] hover:shadow-[0_8px_24px_rgba(1,57,211,0.5)] hover:-translate-y-[5px] transition-all duration-300 ease-in-out rounded-lg overflow-hidden">
+            <div className="project-card border border-[#27272a] hover:border-[#4b5563] hover:shadow-[0_8px_24px_rgba(1,57,211,0.5)] hover:-translate-y-[5px] transition-all duration-300 ease-in-out rounded-lg overflow-hidden">
                 {image ? (
-                    <Image 
-                        src={image} 
-                        alt={title} 
-                        width={800} 
-                        height={500} 
-                        className="w-full h-auto" 
+                    <Image
+                        src={image}
+                        alt={title}
+                        width={800}
+                        height={500}
+                        className="w-full h-auto"
                     />
                 ) : (
-                    <div className="bg-[rgba(10,10,10,0.7)] border-b border-b-[#27272a] flex items-center justify-center h-[150px]">
+                    <div className="bg-[rgb(10,10,10)] border-b border-b-[#27272a] flex items-center justify-center h-[150px]">
                         <span className="text-gray-500">No Image</span>
                     </div>
                 )}
@@ -35,11 +35,11 @@ const ProjectCard: React.FC<Project> = ({
                 <div className="relative project-caption p-4">
                     <h5 className="font-bold mb-2 text-xl">{title}</h5>
                     <p className="text-gray-400 mb-4">{description}</p>
-                    <a 
-                        href={link} 
-                        target="_blank" 
+                    <a
+                        href={link}
+                        target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-block bg-[rgb(1,57,211)] mr-2 py-2 px-4 rounded-full hover:bg-blue-700 transition-colors duration-300 ease-in-out"
+                        className="inline-block bg-[rgb(1,57,211)] text-center w-[100%] sm:w-30 mr-2 py-2 px-4 rounded-full hover:bg-blue-700 transition-colors duration-300 ease-in-out"
                     >
                         Visit
                     </a>

@@ -12,7 +12,7 @@ interface Skill {
 const SkillItem: React.FC<Skill> = ({ name, variant, label }) => {
     return (
         <div data-aos="zoom-in">
-            <div className="bg-[rgba(10,10,10,0.7)] border border-[#27272a] hover:border-[#4b5563] hover:bg-[rgba(19,19,19,0.9)] hover:shadow-[0_8px_24px_rgba(1,57,211,0.5)] hover:-translate-y-[5px] transition-all duration-300 ease-in-out backdrop-blur-md rounded-full flex items-center justify-center py-4 px-6">
+            <div className="bg-[rgb(10,10,10)] border border-[#27272a] hover:border-[#4b5563] hover:bg-[rgb(19,19,19)] hover:shadow-[0_8px_24px_rgba(1,57,211,0.5)] hover:-translate-y-[5px] transition-all duration-300 ease-in-out rounded-full flex items-center justify-center py-4 px-6">
                 <StackIcon 
                     name={name} 
                     variant={variant} 
