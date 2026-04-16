@@ -37,7 +37,7 @@ export default function DotPattern({
   children,
   dotSize = 2,
   gap = 24,
-  baseColor = "#404040",
+  baseColor = "#454545",
   glowColor = "#0139D3",
   proximity = 120,
   glowIntensity = 1,

@@ -29,7 +29,7 @@ const Skills: React.FC = () => {
 
     return (
         <div className="section-container" id="skills">
-            <h2 data-aos="zoom-out" className="mb-7 font-bold text-3xl text-center">Skills.</h2>
+            <h2 data-aos="zoom-out" className="mt-12 mb-7 font-bold text-3xl text-center">Skills.</h2>
 
             <div className="flex flex-wrap justify-center gap-3">
                 {skills.map((skill, index) => (
