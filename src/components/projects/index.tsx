@@ -54,7 +54,7 @@ const Projects: React.FC = () => {
 
     return (
         <div className="section-container" id="projects">
-            <h2 data-aos="fade-right" className="mt-12 mb-7 font-bold text-3xl">Projects.</h2>
+            <h2 data-aos="fade-right" className="mb-7 font-bold text-3xl">Projects.</h2>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 items-start">
                 {projects.map((project, index) => (

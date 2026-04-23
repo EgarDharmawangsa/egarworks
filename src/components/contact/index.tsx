@@ -1,3 +1,5 @@
+"use client"
+
 import { FaWhatsapp, FaGithub, FaLinkedin, FaInstagram } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 
@@ -18,7 +20,7 @@ const contactData: Contact[] = [
 const Contact: React.FC = () => {
     return (
         <div className="section-container" id="contact">
-            <h2 data-aos="zoom-in" className="mt-12 mb-7 font-bold text-3xl text-center">Contact.</h2>
+            <h2 data-aos="zoom-in" className="mb-7 font-bold text-3xl text-center">Contact.</h2>
 
             <div data-aos="fade-right" className="max-w-sm flex items-center justify-around mx-auto mb-4 p-3 bg-[rgb(10,10,10)] border border-[#27272a] rounded-full shadow-[0px_5px_15px_rgb(0,0,0)]">
                 {contactData.map((contact, index) => (
@@ -42,15 +44,18 @@ const Contact: React.FC = () => {
                             type="text"
                             placeholder="Your Name..."
                             className="p-3 bg-[rgb(10,10,10)] border border-[#27272a] rounded-lg"
+                            required
                         />
                         <input
                             type="email"
                             placeholder="Your Email..."
                             className="p-3 bg-[rgb(10,10,10)] border border-[#27272a] rounded-lg"
+                            required
                         />
                         <textarea
                             placeholder="Your Message..."
                             className="p-3 bg-[rgb(10,10,10)] border border-[#27272a] rounded-lg"
+                            required
                         ></textarea>
                         <button
                             type="submit"

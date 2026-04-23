@@ -11,12 +11,12 @@
 
 .section-container {
   color: white;
-  margin: 1.5rem 6rem;
+  padding: 1.5rem 6rem;
 }
 
 @media (max-width: 1024px) {
   .section-container {
-    margin: 1.5rem;
+    padding: 1.5rem;
   }
 }
 

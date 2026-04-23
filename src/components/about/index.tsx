@@ -5,7 +5,7 @@ const About: React.FC = () => {
             className="section-container" 
             id="about"
         >
-            <div className="bg-black border border-[#27272a] hover:border-[#4b5563] hover:bg-[rgb(10,10,10)] hover:shadow-[0_0_24px_rgba(1,57,211,0.5)] transition-all duration-300 ease-in-out pt-6 px-7 pb-7 rounded-[15px]">
+            <div className="relative bg-black border border-[#27272a] hover:border-[#4b5563] hover:bg-[rgb(10,10,10)] hover:shadow-[0_0_24px_rgba(1,57,211,0.5)] transition-all duration-300 ease-in-out pt-6 px-7 pb-7 rounded-[15px]">
                 <h2 className="mb-5 font-bold text-3xl">About.</h2>
 
                 <p className="m-0">

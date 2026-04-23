@@ -1,7 +1,24 @@
+"use client"
+
+import { useState } from "react";
 import Image from "next/image";
 import "./hero.css";
 
 const Hero: React.FC = () => {
+    const [loading, setLoading] = useState<boolean>(false);
+
+    const fileDownload = () => {
+        setLoading(true);
+        setTimeout(() => {
+            setLoading(false);
+        }, 3000);
+        
+        const link = document.createElement("a");
+        link.href = "/files/CV.pdf";
+        link.download = "CV.pdf";
+        link.click();
+    };
+
     return (
         <div className="section-container" id="hero">
             <div className="mt-28 mb-10 flex flex-col-reverse md:flex-row items-center">
@@ -11,9 +28,17 @@ const Hero: React.FC = () => {
                         <h1 data-aos="fade-right" className="text-4xl sm:text-5xl mb-5 font-bold leading-11 md:leading-16">
                             Egar Dharmawangsa
                         </h1>
-                        <p data-aos="fade-right" className="text-[22px] sm:text-[25px] bg-[rgb(1,57,211)] overflow-hidden whitespace-nowrap hero-role">
+                        <p className="text-[22px] sm:text-[25px] bg-[rgb(1,57,211)] overflow-hidden whitespace-nowrap hero-role">
                             Full-Stack Web Developer
                         </p>
+                        <button 
+                            data-aos="zoom-in" 
+                            onClick={fileDownload} 
+                            className="inline-block mt-6 py-2 px-6 bg-black rounded-full border border-white hover:bg-[rgb(1,57,211)] hover:shadow-[0_0_24px_rgba(1,57,211,0.5)] transition-all duration-300 ease-in-out" 
+                            disabled={loading}
+                        >
+                            {loading ? "Downloading..." : "Download CV"}
+                        </button>
                     </div>
                 </div>
 
