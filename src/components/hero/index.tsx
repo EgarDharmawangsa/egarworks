@@ -14,8 +14,8 @@ const Hero: React.FC = () => {
         }, 3000);
         
         const link = document.createElement("a");
-        link.href = "/files/CV.pdf";
-        link.download = "CV.pdf";
+        link.href = "/files/(CV) I Komang Egar Suarama Dharmawangsa.pdf";
+        link.download = "(CV) I Komang Egar Suarama Dharmawangsa.pdf";
         link.click();
     };
 
