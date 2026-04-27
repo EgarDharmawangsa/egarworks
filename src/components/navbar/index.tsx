@@ -1,9 +1,30 @@
 "use client";
 
+import "./navbar.css";
 import { useState, useEffect } from "react";
 
 const Navbar: React.FC = () => {
     const [isOpen, setIsOpen] = useState<boolean>(false);
+    const [activeSection, setActiveSection] = useState<string>("");
+
+    useEffect(() => {
+        const sections = document.querySelectorAll<HTMLElement>("section");
+
+        const observer = new IntersectionObserver((entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    setActiveSection(entry.target.id);
+                }
+            });
+        }
+        ), { threshold: 0.6 });
+
+        sections.forEach(section => observer.observe(section));
+
+        return () => {
+            sections.forEach(section => observer.unobserve(section));
+        }
+    }, []);
 
     useEffect(() => {
         const handleResize = (): void => {
@@ -26,10 +47,10 @@ const Navbar: React.FC = () => {
                     <div className="text-xl font-bold">EGARWORKS</div>
 
                     <div className="hidden md:flex space-x-6">
-                        <a href="#about" className="text-[rgb(0,68,255)] font-bold">About</a>
-                        <a href="#skills" className="">Skills</a>
-                        <a href="#projects" className="">Projects</a>
-                        <a href="#contact" className="">Contact</a>
+                        <a href="#about" className={activeSection === "about" ? "active" : ""}>About</a>
+                        <a href="#skills" className={activeSection === "skills" ? "active" : ""}>Skills</a>
+                        <a href="#projects" className={activeSection === "projects" ? "active" : ""}>Projects</a>
+                        <a href="#contact" className={activeSection === "contact" ? "active" : ""}>Contact</a>
                     </div>
 
                     <div className="md:hidden">
@@ -45,10 +66,10 @@ const Navbar: React.FC = () => {
             </div>
 
             <div className={`${isOpen ? "max-h-64 pb-4" : "max-h-0"} overflow-hidden transition-all duration-500 ease-in-out md:hidden`}>
-                <a href="#about" className="block py-2">About</a>
-                <a href="#skills" className="block py-2">Skills</a>
-                <a href="#projects" className="block py-2">Projects</a>
-                <a href="#contact" className="block py-2">Contact</a>
+                <a href="#about" className={`${activeSection === "about" ? "active" : ""} block py-2`}>About</a>
+                <a href="#skills" className={`${activeSection === "skills" ? "active" : ""} block py-2`}>Skills</a>
+                <a href="#projects" className={`${activeSection === "projects" ? "active" : ""} block py-2`}>Projects</a>
+                <a href="#contact" className={`${activeSection === "contact" ? "active" : ""} block py-2`}>Contact</a>
             </div>
         </nav>
     );

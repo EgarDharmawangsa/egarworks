@@ -1,0 +1,6 @@
+.active {
+    color: rgb(0, 68, 255);
+    font-weight: bold;
+    text-shadow: 0 0 24px rgb(1, 57, 211);
+    transition: all 0.3s ease-in-out;
+}

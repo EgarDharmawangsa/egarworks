@@ -1,11 +1,18 @@
-"use client"
+"use client";
 
+import { useState } from "react";
 import { FaWhatsapp, FaGithub, FaLinkedin, FaInstagram } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 
 interface Contact {
     link: string;
     icon: React.ReactNode;
+}
+
+interface FormValues {
+    name: string;
+    email: string;
+    message: string;
 }
 
 const contactData: Contact[] = [
@@ -16,68 +23,110 @@ const contactData: Contact[] = [
     { link: "https://instagram.com/gazzelll_", icon: <FaInstagram className="text-2xl" /> }
 ];
 
-
 const Contact: React.FC = () => {
-    // const sendEmail = async () => {
-    //     const res = await fetch("/api/send-email", {
-    //         method: "POST",
-    //         headers: {
-    //             "Content-Type": "application/json",
-    //         },
-    //         body: JSON.stringify({
-    //             name: "John Doe",
-    //             email: "3bOoC@example.com",
-    //             message: "Hello, world!",
-    //         }),
-    //     });
-    //     const data = await res.json();
-    //     console.log(data);
-    // };
+    const [loading, setLoading] = useState<boolean>(false);
+    const [status, setStatus] = useState<string>("");
+
+    const sendEmail = async (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+
+        const form = e.currentTarget;
+        const formData = new FormData(form);
+
+        const values: FormValues = {
+            name: formData.get("name") as string,
+            email: formData.get("email") as string,
+            message: formData.get("message") as string,
+        };
+
+        if (!values.name || !values.email || !values.message) {
+            setStatus("Please fill out all the fields.");
+
+            setTimeout(() => {
+                setStatus("");
+            }, 5000);
+
+            return;
+        }
+
+        setLoading(true);
+        setStatus("");
+
+        try {
+            const res = await fetch("/api/send-email", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(values),
+            });
+
+            if (!res.ok) throw new Error("Failed to send email");
+
+            await res.json();
+
+            setStatus("Message sent successfully!");
+
+            console.log("Email sent successfully:", values);
+            
+            form.reset();
+        } catch (error) {
+            console.error(error);
+            setStatus("Failed to send message.");
+        } finally {
+            setLoading(false);
+
+            setTimeout(() => {
+                setStatus("");
+            }, 5000);
+        }
+    };
 
     return (
         <section className="section-container" id="contact">
-            <h2 data-aos="zoom-in" className="mb-7 font-bold text-3xl text-center">Contact.</h2>
+            <h2 className="mb-7 font-bold text-3xl text-center">Contact.</h2>
 
-            <div data-aos="fade-right" className="max-w-sm flex items-center justify-around mx-auto mb-4 p-3 bg-[rgb(10,10,10)] border border-[#27272a] rounded-full shadow-[0px_5px_15px_rgb(0,0,0)]">
+            <div className="max-w-sm flex items-center justify-around mx-auto mb-4 p-3 bg-[rgb(10,10,10)] border border-[#27272a] rounded-full">
                 {contactData.map((contact, index) => (
-                    <a
-                        key={index}
-                        href={contact.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
+                    <a key={index} href={contact.link} target="_blank" rel="noopener noreferrer">
                         {contact.icon}
                     </a>
                 ))}
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div data-aos="fade-up" className="bg-[rgb(10,10,10)] border border-[#27272a] rounded-[15px] shadow-[0px_5px_15px_rgb(0,0,0)] p-4">
-                    <h2 className="mb-5 font-bold text-xl text-center">Send me a quick message</h2>
+                <div className="bg-[rgb(10,10,10)] border border-[#27272a] rounded-[15px] p-4">
+                    <h2 className="mb-5 font-bold text-xl text-center">
+                        Send me a quick message
+                    </h2>
 
-                    <form className="flex flex-col gap-4">
+                    <form onSubmit={sendEmail} className="flex flex-col gap-4">
                         <input
                             type="text"
+                            name="name"
                             placeholder="Your Name..."
-                            className="p-3 bg-[rgb(10,10,10)] border border-[#27272a] rounded-lg"
-                            required
+                            className="p-3 rounded-lg border border-[#27272a] hover:border-[#4b5563] transition-border duration-300 ease-in-out"
                         />
                         <input
                             type="email"
+                            name="email"
                             placeholder="Your Email..."
-                            className="p-3 bg-[rgb(10,10,10)] border border-[#27272a] rounded-lg"
-                            required
+                            className="p-3 rounded-lg border border-[#27272a] hover:border-[#4b5563] transition-border duration-300 ease-in-out"
                         />
                         <textarea
+                            name="message"
                             placeholder="Your Message..."
-                            className="p-3 bg-[rgb(10,10,10)] border border-[#27272a] rounded-lg"
-                            required
-                        ></textarea>
-                        <button
-                            type="submit"
-                            className="bg-[rgb(1,57,211)] mx-auto py-2 px-4 w-[100%] sm:w-45 rounded-full hover:bg-blue-700 transition-colors duration-300 ease-in-out"
-                        >
-                            Send Message
+                            className="p-3 rounded-lg border border-[#27272a] hover:border-[#4b5563] transition-border duration-300 ease-in-out"
+                        />
+
+                        {status && (
+                            <p className={`text-${status.includes("successfully") ? "green" : "red"}-500`}>
+                                {status}
+                            </p>
+                        )}
+
+                        <button type="submit" className="bg-[rgb(1,57,211)] mx-auto py-2 px-4 w-[100%] sm:w-45 rounded-full hover:bg-blue-700 transition-colors duration-300 ease-in-out" disabled={loading}>
+                            {loading ? "Sending..." : "Send Message"}
                         </button>
                     </form>
                 </div>
@@ -88,11 +137,11 @@ const Contact: React.FC = () => {
                     className="w-full h-full rounded-[15px] border border-[#27272a] rounded-[15px] shadow-[0px_5px_15px_rgb(0,0,0)]"
                     allowFullScreen={true}
                     loading="lazy"
-                    referrerPolicy="no-referrer-when-downgrade"
-                ></iframe>
+                    referrerPolicy="no-referrer-when-downgrade">
+                </iframe>
             </div>
         </section>
     );
-}
+};
 
 export default Contact;

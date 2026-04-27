@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Inter } from "next/font/google";
+import { Inter } from "next/font/google";
 import AOSProvider from "./AOSProvider";
 import DotPattern from "@/components/ui/dot-pattern";
 import Navbar from "@/components/navbar";
@@ -8,16 +8,6 @@ import "./globals.css";
 import { cn } from "@/lib/utils";
 
 const inter = Inter({subsets:['latin'],variable:'--font-sans'});
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
 
 export const metadata: Metadata = {
   title: "EGARWORKS",
@@ -28,9 +18,9 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html
       lang="en"
-      className={cn("h-full", "antialiased", geistSans.variable, geistMono.variable, "font-sans", inter.variable)}
+      className={cn("h-full", "antialiased", "font-sans", inter.variable)}
     >
-      <body className="m-0 p-0">
+      <body className="m-0 p-0 overflow-x-hidden">
         <DotPattern />
         <AOSProvider>
           <Navbar />
