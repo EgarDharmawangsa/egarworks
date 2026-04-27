@@ -1,6 +1,6 @@
 const About: React.FC = () => {
     return (
-        <div 
+        <section 
             data-aos="fade-up" 
             className="section-container" 
             id="about"
@@ -9,20 +9,10 @@ const About: React.FC = () => {
                 <h2 className="mb-5 font-bold text-3xl">About.</h2>
 
                 <p className="m-0">
-                    I am a student at ITB STIKOM Bali with a strong
-                    interest in web development, particularly as a
-                    full-stack web developer. I am experienced in using
-                    technologies such as React, Next.js, and Laravel
-                    to build functional and efficient web-based applications.
-                    In addition, I have the ability to understand system
-                    requirements and translate them into well-structured
-                    digital solutions. I am also eager to learn new things,
-                    capable of working both independently and in a team,
-                    and committed to continuously improving my skills
-                    in the field of information technology.
+                    I am a graduate of ITB STIKOM Bali with a strong interest in web development, particularly as a full-stack web developer. I have experience using technologies such as Laravel to build functional and efficient web-based applications. In addition, I am capable of understanding system requirements and translating them into well-structured digital solutions. I am eager to learn new things, able to work both independently and in a team, and committed to continuously improving my skills in the field of information technology.
                 </p>
             </div>
-        </div>
+        </section>
     );
 }
 

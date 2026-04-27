@@ -28,7 +28,7 @@ const Skills: React.FC = () => {
     const skills = skillsData as Skill[];
 
     return (
-        <div className="section-container" id="skills">
+        <section className="section-container" id="skills">
             <h2 data-aos="zoom-out" className="mb-7 font-bold text-3xl text-center">Skills.</h2>
 
             <div className="flex flex-wrap justify-center gap-3">
@@ -36,7 +36,7 @@ const Skills: React.FC = () => {
                     <SkillItem key={index} {...skill} />
                 ))}
             </div>
-        </div>
+        </section>
     );
 };
 

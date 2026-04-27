@@ -18,8 +18,24 @@ const contactData: Contact[] = [
 
 
 const Contact: React.FC = () => {
+    // const sendEmail = async () => {
+    //     const res = await fetch("/api/send-email", {
+    //         method: "POST",
+    //         headers: {
+    //             "Content-Type": "application/json",
+    //         },
+    //         body: JSON.stringify({
+    //             name: "John Doe",
+    //             email: "3bOoC@example.com",
+    //             message: "Hello, world!",
+    //         }),
+    //     });
+    //     const data = await res.json();
+    //     console.log(data);
+    // };
+
     return (
-        <div className="section-container" id="contact">
+        <section className="section-container" id="contact">
             <h2 data-aos="zoom-in" className="mb-7 font-bold text-3xl text-center">Contact.</h2>
 
             <div data-aos="fade-right" className="max-w-sm flex items-center justify-around mx-auto mb-4 p-3 bg-[rgb(10,10,10)] border border-[#27272a] rounded-full shadow-[0px_5px_15px_rgb(0,0,0)]">
@@ -37,7 +53,7 @@ const Contact: React.FC = () => {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div data-aos="fade-up" className="bg-[rgb(10,10,10)] border border-[#27272a] rounded-[15px] shadow-[0px_5px_15px_rgb(0,0,0)] p-4">
-                    <h2 className="mb-5 font-bold text-xl text-center">Send me a message</h2>
+                    <h2 className="mb-5 font-bold text-xl text-center">Send me a quick message</h2>
 
                     <form className="flex flex-col gap-4">
                         <input
@@ -75,7 +91,7 @@ const Contact: React.FC = () => {
                     referrerPolicy="no-referrer-when-downgrade"
                 ></iframe>
             </div>
-        </div>
+        </section>
     );
 }
 

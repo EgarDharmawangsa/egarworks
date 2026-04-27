@@ -26,10 +26,10 @@ const Navbar: React.FC = () => {
                     <div className="text-xl font-bold">EGARWORKS</div>
 
                     <div className="hidden md:flex space-x-6">
-                        <a href="#about">About</a>
-                        <a href="#skills">Skills</a>
-                        <a href="#projects">Projects</a>
-                        <a href="#contact">Contact</a>
+                        <a href="#about" className="text-[rgb(0,68,255)] font-bold">About</a>
+                        <a href="#skills" className="">Skills</a>
+                        <a href="#projects" className="">Projects</a>
+                        <a href="#contact" className="">Contact</a>
                     </div>
 
                     <div className="md:hidden">

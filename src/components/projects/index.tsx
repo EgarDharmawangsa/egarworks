@@ -53,7 +53,7 @@ const Projects: React.FC = () => {
     const projects: Project[] = projectsData;
 
     return (
-        <div className="section-container" id="projects">
+        <section className="section-container" id="projects">
             <h2 data-aos="fade-right" className="mb-7 font-bold text-3xl">Projects.</h2>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 items-start">
@@ -61,7 +61,7 @@ const Projects: React.FC = () => {
                     <ProjectCard key={index} {...project} />
                 ))}
             </div>
-        </div>
+        </section>
     );
 };
 
