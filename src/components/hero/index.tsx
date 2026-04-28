@@ -24,7 +24,7 @@ const Hero: React.FC = () => {
             <div className="mt-28 mb-10 flex flex-col-reverse md:flex-row items-center">
                 <div className="md:w-1/2 mt-10 md:mt-0 md:mx-4 flex justify-center">
                     <div>
-                        <p data-aos="fade-right" className="m-0">Hello👋, I&apos;m</p>
+                        <span data-aos="fade-right" className="block mb-1">Hello👋, I&apos;m</span>
                         <h1 data-aos="fade-right" className="text-4xl sm:text-5xl mb-5 font-bold leading-11 md:leading-16">
                             Egar Dharmawangsa
                         </h1>
@@ -34,7 +34,7 @@ const Hero: React.FC = () => {
                         <div data-aos="zoom-in">
                             <button 
                                 onClick={fileDownload} 
-                                className="inline-block mt-6 py-2 px-6 bg-black border border-white hover:bg-[rgb(1,57,211)] hover:shadow-[0_0_24px_rgba(1,57,211,0.5)] transition-all duration-300 ease-in-out rounded-full" 
+                                className="inline-block mt-8 py-2 px-6 text-[15px] bg-black border border-white hover:bg-[rgb(1,57,211)] hover:shadow-[0_0_24px_rgba(1,57,211,0.5)] transition-all duration-300 ease-in-out rounded-full" 
                                 disabled={loading}
                             >
                                 {loading ? "Downloading..." : "Download CV"}

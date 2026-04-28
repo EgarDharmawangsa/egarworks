@@ -32,14 +32,14 @@ const ProjectCard: React.FC<Project> = ({
                     </div>
                 )}
 
-                <div className="relative project-caption p-4">
-                    <h5 className="font-bold mb-2 text-xl">{title}</h5>
-                    <p className="text-gray-400 mb-4">{description}</p>
+                <div className="relative project-caption pt-3 px-4 pb-4">
+                    <h2 className="font-bold mb-2 text-lg">{title}</h2>
+                    <p className="text-gray-400 mb-4 text-[14px] leading-6">{description}</p>
                     <a
                         href={link}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-block bg-[rgb(1,57,211)] text-center w-[100%] sm:w-30 mr-2 py-2 px-4 rounded-full hover:bg-blue-700 transition-colors duration-300 ease-in-out"
+                        className="inline-block bg-[rgb(1,57,211)] text-center text-[15px] w-[100%] sm:w-20 p-2 rounded-full hover:bg-blue-700 transition-colors duration-300 ease-in-out"
                     >
                         Visit
                     </a>
@@ -54,7 +54,7 @@ const Projects: React.FC = () => {
 
     return (
         <section className="section-container" id="projects">
-            <h2 data-aos="fade-right" className="mb-7 font-bold text-3xl">Projects.</h2>
+            <h1 className="mb-7 font-bold text-3xl">Projects.</h1>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 items-start">
                 {projects.map((project, index) => (

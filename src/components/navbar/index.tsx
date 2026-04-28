@@ -41,27 +41,25 @@ const Navbar: React.FC = () => {
     }, []);
 
     return (
-        <nav className="bg-[rgba(10,10,10,0.7)] border border-[#27272a] hover:border-[#4b5563] hover:bg-[rgba(19,19,19,0.9)] transition-all duration-300 ease-in-out px-6 text-white fixed w-[90%] z-10 top-5 left-1/2 -translate-x-1/2 rounded-[15px] backdrop-blur-md shadow-[0px_5px_15px_rgba(0,0,0,0.7)]">
-            <div className="max-w-7xl mx-auto">
-                <div className="flex justify-between items-center h-16">
-                    <div className="text-xl font-bold">EGARWORKS</div>
+        <nav className="bg-[rgba(10,10,10,0.8)] text-white border border-[#27272a] hover:border-[#4b5563] hover:bg-[rgba(19,19,19,0.9)] transition-all duration-300 ease-in-out px-7 fixed w-[90%] z-10 top-5 left-1/2 -translate-x-1/2 rounded-[15px] backdrop-blur-md shadow-[0px_5px_15px_rgba(0,0,0,0.7)]">
+            <div className="flex justify-between items-center h-16">
+                <a href="#hero" className="brand-name text-lg">EGARWORKS</a>
 
-                    <div className="hidden md:flex space-x-6">
-                        <a href="#about" className={activeSection === "about" ? "active" : ""}>About</a>
-                        <a href="#skills" className={activeSection === "skills" ? "active" : ""}>Skills</a>
-                        <a href="#projects" className={activeSection === "projects" ? "active" : ""}>Projects</a>
-                        <a href="#contact" className={activeSection === "contact" ? "active" : ""}>Contact</a>
-                    </div>
+                <div className="hidden md:flex space-x-6">
+                    <a href="#about" className={activeSection === "about" ? "active" : ""}>About</a>
+                    <a href="#skills" className={activeSection === "skills" ? "active" : ""}>Skills</a>
+                    <a href="#projects" className={activeSection === "projects" ? "active" : ""}>Projects</a>
+                    <a href="#contact" className={activeSection === "contact" ? "active" : ""}>Contact</a>
+                </div>
 
-                    <div className="md:hidden">
-                        <button 
-                            onClick={() => setIsOpen(!isOpen)} 
-                            className="focus:outline-none text-2xl" 
-                            aria-label="Toggle menu"
-                        >
-                            ☰
-                        </button>
-                    </div>
+                <div className="md:hidden">
+                    <button
+                        onClick={() => setIsOpen(!isOpen)}
+                        className="focus:outline-none text-2xl"
+                        aria-label="Toggle menu"
+                    >
+                        ☰
+                    </button>
                 </div>
             </div>
 

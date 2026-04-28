@@ -68,7 +68,7 @@ const Contact: React.FC = () => {
             setStatus("Message sent successfully!");
 
             console.log("Email sent successfully:", values);
-            
+
             form.reset();
         } catch (error) {
             console.error(error);
@@ -84,9 +84,9 @@ const Contact: React.FC = () => {
 
     return (
         <section className="section-container" id="contact">
-            <h2 className="mb-7 font-bold text-3xl text-center">Contact.</h2>
+            <h1 className="mb-7 font-bold text-3xl text-center">Contact.</h1>
 
-            <div className="max-w-sm flex items-center justify-around mx-auto mb-4 p-3 bg-[rgb(10,10,10)] border border-[#27272a] rounded-full">
+            <div className="max-w-sm flex items-center justify-around mx-auto mb-4 p-3 bg-[rgb(10,10,10)] border border-[#27272a] rounded-full shadow-[0px_5px_15px_rgb(0,0,0)]">
                 {contactData.map((contact, index) => (
                     <a key={index} href={contact.link} target="_blank" rel="noopener noreferrer">
                         {contact.icon}
@@ -95,37 +95,44 @@ const Contact: React.FC = () => {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div className="bg-[rgb(10,10,10)] border border-[#27272a] rounded-[15px] p-4">
-                    <h2 className="mb-5 font-bold text-xl text-center">
-                        Send me a quick message
-                    </h2>
+                <div className="bg-[rgb(10,10,10)] border border-[#27272a] rounded-[15px] p-4 shadow-[0px_5px_15px_rgb(0,0,0)]">
+                    <h2 className="mb-5 font-bold mb-2 text-lg text-center">Send me a quick message</h2>
 
                     <form onSubmit={sendEmail} className="flex flex-col gap-4">
-                        <input
-                            type="text"
-                            name="name"
-                            placeholder="Your Name..."
-                            className="p-3 rounded-lg border border-[#27272a] hover:border-[#4b5563] transition-border duration-300 ease-in-out"
-                        />
-                        <input
-                            type="email"
-                            name="email"
-                            placeholder="Your Email..."
-                            className="p-3 rounded-lg border border-[#27272a] hover:border-[#4b5563] transition-border duration-300 ease-in-out"
-                        />
-                        <textarea
-                            name="message"
-                            placeholder="Your Message..."
-                            className="p-3 rounded-lg border border-[#27272a] hover:border-[#4b5563] transition-border duration-300 ease-in-out"
-                        />
+                        <div className="flex flex-col">
+                            <label htmlFor="name" className="mb-2 text-[15px]">Name</label>
+                            <input
+                                type="text"
+                                name="name"
+                                placeholder="Your Name..."
+                                className="text-[15px] p-2 rounded-lg border border-[#27272a] hover:border-[#4b5563] transition-border duration-300 ease-in-out"
+                            />
+                        </div>
+                        <div className="flex flex-col">
+                            <label htmlFor="email" className="mb-2 text-[15px]">Email</label>
+                            <input
+                                type="email"
+                                name="email"
+                                placeholder="Your Email..."
+                                className="text-[15px] p-2 rounded-lg border border-[#27272a] hover:border-[#4b5563] transition-border duration-300 ease-in-out"
+                            />
+                        </div>
+                        <div className="flex flex-col">
+                            <label htmlFor="message" className="mb-2 text-[15px]">Message</label>
+                            <textarea
+                                name="message"
+                                placeholder="Your Message..."
+                                className="text-[15px] p-2 rounded-lg border border-[#27272a] hover:border-[#4b5563] transition-border duration-300 ease-in-out"
+                            />
+                        </div>
 
                         {status && (
-                            <p className={`text-${status.includes("successfully") ? "green" : "red"}-500`}>
+                            <p className={`${status.includes("successfully") ? "text-green-500" : "text-red-500"} text-center text-[15px]`}>
                                 {status}
                             </p>
                         )}
 
-                        <button type="submit" className="bg-[rgb(1,57,211)] mx-auto py-2 px-4 w-[100%] sm:w-45 rounded-full hover:bg-blue-700 transition-colors duration-300 ease-in-out" disabled={loading}>
+                        <button type="submit" className="bg-[rgb(1,57,211)] text-[15px] mx-auto py-2 px-4 w-[100%] sm:w-45 rounded-full hover:bg-blue-700 transition-colors duration-300 ease-in-out" disabled={loading}>
                             {loading ? "Sending..." : "Send Message"}
                         </button>
                     </form>

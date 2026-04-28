@@ -12,11 +12,11 @@ interface Skill {
 const SkillItem: React.FC<Skill> = ({ name, variant, label }) => {
     return (
         <div data-aos="zoom-in">
-            <div className="bg-[rgb(10,10,10)] border border-[#27272a] hover:border-[#4b5563] hover:bg-[rgb(19,19,19)] hover:shadow-[0_8px_24px_rgba(1,57,211,0.5)] hover:-translate-y-[5px] transition-all duration-300 ease-in-out rounded-full flex items-center justify-center py-4 px-6">
+            <div className="bg-[rgb(10,10,10)] border border-[#27272a] hover:border-[#4b5563] hover:bg-[rgb(19,19,19)] hover:shadow-[0_8px_24px_rgba(1,57,211,0.5)] hover:-translate-y-[5px] transition-all duration-300 ease-in-out rounded-full flex items-center justify-center py-4 px-5">
                 <StackIcon 
                     name={name} 
                     variant={variant} 
-                    className="w-[30px] h-[30px] mr-4 object-contain" 
+                    className="w-[25px] h-[25px] mr-3 object-contain" 
                 />
                 <span>{label}</span>
             </div>
@@ -29,7 +29,7 @@ const Skills: React.FC = () => {
 
     return (
         <section className="section-container" id="skills">
-            <h2 data-aos="zoom-out" className="mb-7 font-bold text-3xl text-center">Skills.</h2>
+            <h1 className="mb-7 font-bold text-3xl text-center">Skills.</h1>
 
             <div className="flex flex-wrap justify-center gap-3">
                 {skills.map((skill, index) => (

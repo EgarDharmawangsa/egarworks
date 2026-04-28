@@ -1,6 +1,14 @@
+.brand-name,
 .active {
-    color: rgb(0, 68, 255);
+    color: white;
     font-weight: bold;
-    text-shadow: 0 0 24px rgb(1, 57, 211);
+}
+
+nav a {
+    color: #9ca3af;
     transition: all 0.3s ease-in-out;
+}
+
+nav a:hover {
+    color: white;
 }
