@@ -38,7 +38,7 @@ export default function DotPattern({
   dotSize = 2,
   gap = 24,
   baseColor = "#454545",
-  glowColor = "#0139D3",
+  glowColor = "#477eec",
   proximity = 120,
   glowIntensity = 1,
   waveSpeed = 0.5,
@@ -50,25 +50,22 @@ export default function DotPattern({
   const mouseRef = useRef({ x: -1000, y: -1000 });
   const animationRef = useRef<number | null>(null);
 
-  // ⛔ FIX: jangan init performance.now di render
   const startTimeRef = useRef<number>(0);
 
   const baseRgb = useMemo(() => hexToRgb(baseColor), [baseColor]);
   const glowRgb = useMemo(() => hexToRgb(glowColor), [glowColor]);
 
-  // INIT TIME SAFE
   useEffect(() => {
     startTimeRef.current = performance.now();
   }, []);
 
-  // BUILD GRID
   const buildGrid = useCallback(() => {
     const canvas = canvasRef.current;
     const container = containerRef.current;
     if (!canvas || !container) return;
 
     const rect = container.getBoundingClientRect();
-    const dpr = window.devicePixelRatio || 1;
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
 
     canvas.width = rect.width * dpr;
     canvas.height = rect.height * dpr;
@@ -103,7 +100,6 @@ export default function DotPattern({
     dotsRef.current = dots;
   }, [dotSize, gap]);
 
-  // INIT + RESIZE
   useEffect(() => {
     buildGrid();
 
@@ -116,9 +112,9 @@ export default function DotPattern({
     return () => ro.disconnect();
   }, [buildGrid]);
 
-  // MOUSE TRACKING (GLOBAL FIX HOVER BUG)
   useEffect(() => {
-    const handleMove = (e: MouseEvent) => {
+    const handleMove = (e: PointerEvent) => {
+      if (e.pointerType !== "mouse") return;
       mouseRef.current = {
         x: e.clientX,
         y: e.clientY,
@@ -129,17 +125,27 @@ export default function DotPattern({
       mouseRef.current = { x: -1000, y: -1000 };
     };
 
-    window.addEventListener("mousemove", handleMove);
-    window.addEventListener("mouseleave", handleLeave);
+    const handleExit = (event: PointerEvent) => {
+      if (!event.relatedTarget) handleLeave();
+    };
+    window.addEventListener("pointermove", handleMove, { passive: true });
+    window.addEventListener("pointerout", handleExit);
+    window.addEventListener("blur", handleLeave);
 
     return () => {
-      window.removeEventListener("mousemove", handleMove);
-      window.removeEventListener("mouseleave", handleLeave);
+      window.removeEventListener("pointermove", handleMove);
+      window.removeEventListener("pointerout", handleExit);
+      window.removeEventListener("blur", handleLeave);
     };
   }, []);
 
-  // ANIMATION LOOP
   useEffect(() => {
+    const motion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const pointer = window.matchMedia(
+      "(any-hover: hover) and (any-pointer: fine)",
+    );
+    const animate = () =>
+      !motion.matches && pointer.matches && !document.hidden;
     const draw = () => {
       const canvas = canvasRef.current;
       if (!canvas) return;
@@ -156,8 +162,9 @@ export default function DotPattern({
 
       const proxSq = proximity * proximity;
 
-      const time =
-        (performance.now() - startTimeRef.current) * 0.001 * waveSpeed;
+      const time = motion.matches
+        ? 0
+        : (performance.now() - startTimeRef.current) * 0.001 * waveSpeed;
 
       for (const dot of dotsRef.current) {
         const dx = dot.x - mx;
@@ -227,15 +234,32 @@ export default function DotPattern({
         }
       }
 
-      animationRef.current = requestAnimationFrame(draw);
+      animationRef.current = animate() ? requestAnimationFrame(draw) : null;
     };
 
-    animationRef.current = requestAnimationFrame(draw);
+    const refresh = () => {
+      if (animationRef.current !== null)
+        cancelAnimationFrame(animationRef.current);
+      animationRef.current = null;
+      if (motion.matches || !pointer.matches)
+        mouseRef.current = { x: -1000, y: -1000 };
+      if (!document.hidden) draw();
+    };
+    const container = containerRef.current;
+    const resize = new ResizeObserver(refresh);
+    if (container) resize.observe(container);
+    motion.addEventListener("change", refresh);
+    pointer.addEventListener("change", refresh);
+    document.addEventListener("visibilitychange", refresh);
+    refresh();
 
     return () => {
-      if (animationRef.current) {
+      if (animationRef.current !== null)
         cancelAnimationFrame(animationRef.current);
-      }
+      resize.disconnect();
+      motion.removeEventListener("change", refresh);
+      pointer.removeEventListener("change", refresh);
+      document.removeEventListener("visibilitychange", refresh);
     };
   }, [baseRgb, glowRgb, dotSize, proximity, glowIntensity, waveSpeed]);
 
@@ -243,16 +267,18 @@ export default function DotPattern({
     <div
       ref={containerRef}
       className={cn(
-        "fixed inset-0 -z-100 overflow-hidden bg-black pointer-events-none",
+        "fixed inset-0 z-0 overflow-hidden pointer-events-none",
         className,
       )}
     >
-      <canvas ref={canvasRef} className="absolute inset-0 w-full h-full" />
+      <canvas
+        ref={canvasRef}
+        className="absolute inset-0 w-full h-full"
+        aria-hidden="true"
+      />
 
-      {/* overlay aman */}
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent to-black/60" />
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent to-background/60" />
 
-      {/* children tidak ganggu mouse */}
       {children && (
         <div className="relative z-10 h-full w-full pointer-events-none">
           {children}

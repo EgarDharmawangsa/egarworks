@@ -41,6 +41,7 @@ html {
   scroll-padding-top: 100px;
 }
 body {
+  isolation: isolate;
   margin: 0;
   background: var(--background);
   color: var(--foreground);
@@ -696,6 +697,11 @@ h3 {
 }
 .form-success {
   color: #8fd0b3;
+}
+#main,
+.site-footer {
+  position: relative;
+  z-index: 1;
 }
 .site-footer {
   border-top: 1px solid #202127;
