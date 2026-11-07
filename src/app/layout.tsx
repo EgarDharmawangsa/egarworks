@@ -1,15 +1,37 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import localFont from "next/font/local";
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
 import DotPattern from "@/components/ui/dot-pattern";
+import { siteConfig } from "@/config/site";
 import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
+const inter = localFont({
+  src: "../assets/fonts/inter-variable.woff2",
+  weight: "100 900",
+  display: "swap",
+  variable: "--font-inter",
+});
 export const metadata: Metadata = {
-  title: "EGARWORKS — Egar Dharmawangsa",
-  description:
-    "Egar Dharmawangsa, a full-stack web developer based in Bali. Explore my projects, skills, and let's build something together.",
+  metadataBase: new URL(siteConfig.url),
+  title: siteConfig.title,
+  description: siteConfig.description,
+  applicationName: siteConfig.name,
+  authors: [{ name: siteConfig.owner }],
+  alternates: { canonical: "/" },
+  openGraph: {
+    title: siteConfig.title,
+    description: siteConfig.description,
+    url: siteConfig.url,
+    siteName: siteConfig.name,
+    type: "website",
+    locale: "en_US",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: siteConfig.title,
+    description: siteConfig.description,
+  },
 };
 export default function RootLayout({
   children,

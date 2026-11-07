@@ -1,13 +1,14 @@
 import Image from "next/image";
 import { ArrowDown, ArrowUpRight, Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { siteConfig } from "@/config/site";
 export default function Hero() {
   return (
     <section className="shell hero" id="hero">
       <div className="hero-copy">
         <span className="eyebrow">
           <span className="status-dot" />
-          Full-stack web developer
+          {siteConfig.role}
         </span>
         <h1>
           Thoughtful code.
@@ -17,7 +18,7 @@ export default function Hero() {
           digital experiences<span className="blue-dot">.</span>
         </h1>
         <p className="hero-intro">
-          Hi, I’m <strong>Egar Dharmawangsa</strong> — a developer who turns
+          Hi, I’m <strong>{siteConfig.owner}</strong> — a developer who turns
           ideas into functional, intuitive websites.
         </p>
         <div className="hero-actions">
@@ -27,10 +28,7 @@ export default function Hero() {
             </a>
           </Button>
           <Button asChild size="lg" variant="outline">
-            <a
-              href="/files/(CV) I Komang Egar Suarama Dharmawangsa.pdf"
-              download
-            >
+            <a href={siteConfig.cvPath} download>
               Download CV <Download />
             </a>
           </Button>
@@ -49,7 +47,7 @@ export default function Hero() {
           <div className="portrait-image">
             <Image
               src="/images/profile/profile.jpg"
-              alt="Egar Dharmawangsa"
+              alt={siteConfig.owner}
               width={600}
               height={650}
               preload

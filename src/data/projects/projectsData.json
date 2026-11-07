@@ -1,7 +1,7 @@
 [
   {
     "title": "SIAKAD RASDA",
-    "description": "Academic Information System of Saraswati 2 Denpasar Elementary School Based on Website Using Laravel Framework as Final Project of ITB STIKOM Bali.",
+    "description": "Academic information system for Saraswati 2 Denpasar Elementary School, built with Laravel as my final project at ITB STIKOM Bali.",
     "image": "",
     "link": "",
     "icon": "academic",
@@ -11,7 +11,7 @@
   },
   {
     "title": "InventoriKu",
-    "description": "Simple inventory website built using Laravel framework.",
+    "description": "A web-based inventory application built with Laravel.",
     "image": "",
     "link": "",
     "icon": "inventory",
@@ -21,7 +21,7 @@
   },
   {
     "title": "EyeOn Scan",
-    "description": "Simple Optical Character Recognition (OCR) website using Tesseract library.",
+    "description": "An OCR web tool that extracts text from images using Tesseract.",
     "image": "",
     "link": "https://eyeon-scan.vercel.app/",
     "icon": "scan",
@@ -31,7 +31,7 @@
   },
   {
     "title": "EyeOn AI",
-    "description": "Simple chatAI website using Google Gemini 2.0 Flash model from OpenRouter API.",
+    "description": "An AI chat interface powered by Gemini through the OpenRouter API.",
     "image": "",
     "link": "",
     "icon": "ai",
@@ -41,7 +41,7 @@
   },
   {
     "title": "EyeOn Forum",
-    "description": "Simple chat room using Firebase Realtime Database.",
+    "description": "A real-time chat room powered by Firebase Realtime Database.",
     "image": "/images/projects_screenshot/eyeon_forum.png",
     "link": "https://eyeonforum-dfdc2.web.app",
     "icon": "forum",
@@ -51,7 +51,7 @@
   },
   {
     "title": "EyeOn Weather",
-    "description": "Simple weather forecast website using OpenWeatherMap API.",
+    "description": "A weather forecast website using data from the OpenWeatherMap API.",
     "image": "",
     "link": "https://eyeonweather-fdbc1.web.app",
     "icon": "weather",
@@ -61,7 +61,7 @@
   },
   {
     "title": "Generate Recipe",
-    "description": "Simple recipe generator website using Deepseek v3.1 model from OpenRouter API.",
+    "description": "An AI recipe generator powered by DeepSeek through the OpenRouter API.",
     "image": "",
     "link": "https://generate-recipe.vercel.app",
     "icon": "recipe",

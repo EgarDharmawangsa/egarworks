@@ -176,3 +176,37 @@ test("global limit prevents bypassing the cap with different email addresses", a
   );
   assert.equal(sent.length, 20);
 });
+
+test("failed SMTP attempts count toward the submission limit", async () => {
+  const { handler } = setup({
+    sendMail: async () => {
+      throw new Error("SMTP unavailable");
+    },
+  });
+  for (let i = 0; i < 3; i++)
+    assert.equal((await handler(request())).status, 502);
+  assert.equal((await handler(request())).status, 429);
+});
+
+test("accepts JSON with charset and rejects a request without a body", async () => {
+  const { handler } = setup();
+  assert.equal(
+    (
+      await handler(
+        request(values, { "Content-Type": "application/json; charset=utf-8" }),
+      )
+    ).status,
+    200,
+  );
+  assert.equal(
+    (
+      await handler(
+        new Request("https://egarworks.example/api/send-email", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+        }),
+      )
+    ).status,
+    400,
+  );
+});

@@ -36,11 +36,13 @@ export default function Skills() {
                   .map((skill) => {
                     return (
                       <div className="skill-item" key={skill.name}>
-                        <StackIcon
-                          name={skill.name}
-                          variant="dark"
-                          className="size-5 shrink-0"
-                        />
+                        <span className="size-5 shrink-0" aria-hidden="true">
+                          <StackIcon
+                            name={skill.name}
+                            variant="dark"
+                            className="size-5"
+                          />
+                        </span>
                         <span>{skill.label}</span>
                       </div>
                     );

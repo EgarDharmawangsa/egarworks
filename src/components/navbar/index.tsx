@@ -1,11 +1,16 @@
 "use client";
-import { useEffect, useState } from "react";
+import Link from "next/link";
+import { useEffect, useRef, useState } from "react";
 import { ArrowUpRight, Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-const links = ["About", "Skills", "Projects", "Contact"];
+import { Brand } from "@/components/ui/brand";
+import { siteConfig } from "@/config/site";
+
+const links = siteConfig.navigation;
 export default function Navbar() {
   const [open, setOpen] = useState(false);
+  const menuButton = useRef<HTMLButtonElement>(null);
   const [active, setActive] = useState("");
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -20,36 +25,45 @@ export default function Navbar() {
       .querySelectorAll("main section[id]")
       .forEach((section) => observer.observe(section));
     const close = (event: KeyboardEvent) => {
-      if (event.key === "Escape") setOpen(false);
+      if (event.key === "Escape") {
+        setOpen(false);
+        if (
+          document
+            .getElementById("mobile-nav")
+            ?.contains(document.activeElement)
+        )
+          menuButton.current?.focus();
+      }
     };
+    const desktop = window.matchMedia("(min-width: 768px)");
+    const closeOnDesktop = () => {
+      if (desktop.matches) setOpen(false);
+    };
+    desktop.addEventListener("change", closeOnDesktop);
     window.addEventListener("keydown", close);
     return () => {
       observer.disconnect();
+      desktop.removeEventListener("change", closeOnDesktop);
       window.removeEventListener("keydown", close);
     };
   }, []);
   return (
     <header className="site-header">
       <nav className="shell nav-inner" aria-label="Main navigation">
-        <a href="#hero" className="brand" onClick={() => setOpen(false)}>
-          egar<span className="text-muted-foreground">works</span>
-          <span className="brand-dot">.</span>
-        </a>
+        <Brand onClick={() => setOpen(false)} />
         <div className="desktop-nav">
-          {links.map((label) => (
-            <a
+          {links.map(({ label, id }) => (
+            <Link
               key={label}
-              href={`#${label.toLowerCase()}`}
-              aria-current={
-                active === label.toLowerCase() ? "location" : undefined
-              }
+              href={`/#${id}`}
+              aria-current={active === id ? "location" : undefined}
             >
               {label}
-            </a>
+            </Link>
           ))}
         </div>
         <Button asChild variant="outline" size="sm" className="desktop-cta">
-          <a href="mailto:dharmawangsaegar@gmail.com">
+          <a href={`mailto:${siteConfig.email}`}>
             Let’s talk <ArrowUpRight />
           </a>
         </Button>
@@ -57,6 +71,7 @@ export default function Navbar() {
           variant="ghost"
           size="icon"
           className="mobile-toggle"
+          ref={menuButton}
           aria-label={open ? "Close menu" : "Open menu"}
           aria-expanded={open}
           aria-controls="mobile-nav"
@@ -65,15 +80,11 @@ export default function Navbar() {
           {open ? <X /> : <Menu />}
         </Button>
         <div id="mobile-nav" className="mobile-nav" hidden={!open}>
-          {links.map((label) => (
-            <a
-              key={label}
-              href={`#${label.toLowerCase()}`}
-              onClick={() => setOpen(false)}
-            >
+          {links.map(({ label, id }) => (
+            <Link key={label} href={`/#${id}`} onClick={() => setOpen(false)}>
               {label}
               <ArrowUpRight size={16} />
-            </a>
+            </Link>
           ))}
         </div>
       </nav>
