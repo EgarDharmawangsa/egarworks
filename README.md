@@ -49,3 +49,9 @@ The handler validates fields on the server, limits request bodies to 24 KB, reje
 - `public/`: profile image, project screenshots, and downloadable CV.
 
 The page content remains visible without animation libraries. The mobile navigation supports Escape and closes after selecting a section. The contact form provides associated labels, native validation, pending states, and live feedback.
+
+## Visual style
+
+The interface uses solid dark surfaces and a blue accent, without gradients. Glass is limited to the navbar (64% background opacity, 12px blur), About details (60%, 8px), and contact form (78%, 8px). Project cards, skill cards, the portrait badge, and mobile menu use solid backgrounds to keep their content clear. Browsers without backdrop filtering and devices requesting reduced transparency receive opaque surfaces.
+
+Small text and controls have larger readable sizes. Mobile form inputs use 16px text and primary icon controls provide 44px touch targets. The existing Dot Pattern remains interactive, with no movement on touch screens or when reduced motion is requested.

@@ -39,7 +39,7 @@ export default function Hero() {
       <div className="hero-visual">
         <div className="portrait-frame">
           <div className="portrait-topline">
-            <span className="window-dots">
+            <span className="window-dots" aria-hidden="true">
               <i />
               <i />
               <i />
@@ -57,10 +57,7 @@ export default function Hero() {
             />
           </div>
         </div>
-        <div className="portrait-note">
-          <span className="status-dot" />
-          Bali, Indonesia
-        </div>
+        <div className="portrait-note">Always learning, always building.</div>
       </div>
       <a className="scroll-hint" href="#about">
         <ArrowDown size={14} />
