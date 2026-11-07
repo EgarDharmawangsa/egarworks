@@ -45,7 +45,6 @@ export default function Hero() {
               <i />
             </span>
             <span>the developer behind the code</span>
-            <span className="tiny-dot" />
           </div>
           <div className="portrait-image">
             <Image

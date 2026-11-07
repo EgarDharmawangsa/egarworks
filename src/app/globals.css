@@ -245,12 +245,6 @@ h1 {
 .window-dots i:last-child {
   background: #5c826d;
 }
-.tiny-dot {
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  background: #71a68a;
-}
 .portrait-image {
   aspect-ratio: 1.12;
   overflow: hidden;
