@@ -1,10 +1,9 @@
-import { ArrowUpRight, Code2 } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 export default function Footer() {
   return (
     <footer className="site-footer">
       <div className="shell footer-inner">
         <a href="#hero" className="brand">
-          <Code2 size={19} />
           egar<span className="text-muted-foreground">works</span>
           <span className="brand-dot">.</span>
         </a>

@@ -33,7 +33,7 @@ const colors = new Set([
 
 type Project = (typeof projects)[number];
 
-function ProjectCard({ project, index }: { project: Project; index: number }) {
+function ProjectCard({ project }: { project: Project }) {
   const Icon = icons[project.icon as keyof typeof icons] ?? Code2;
   const color = colors.has(project.color) ? project.color : "blue";
   const publicLink = /^https?:\/\//i.test(project.link) ? project.link : null;
@@ -51,14 +51,9 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
           />
         ) : (
           <>
-            <span className="project-preview-type">{project.category}</span>
             <div className="project-emblem">
               <Icon size={34} strokeWidth={1.4} />
             </div>
-            <span className="project-preview-title">{project.title}</span>
-            <span className="project-index">
-              {String(index + 1).padStart(2, "0")}
-            </span>
           </>
         )}
       </div>
@@ -98,18 +93,14 @@ export default function Projects() {
     <section className="shell section" id="projects">
       <div className="section-heading heading-row">
         <div>
-          <span className="eyebrow">03 / SELECTED WORK</span>
           <h2>
             Ideas, brought to life<span className="blue-dot">.</span>
           </h2>
         </div>
-        <span className="count-badge">
-          {String(projects.length).padStart(2, "0")} projects
-        </span>
       </div>
       <div className="projects-grid">
-        {projects.map((project, index) => (
-          <ProjectCard key={project.title} project={project} index={index} />
+        {projects.map((project) => (
+          <ProjectCard key={project.title} project={project} />
         ))}
       </div>
     </section>

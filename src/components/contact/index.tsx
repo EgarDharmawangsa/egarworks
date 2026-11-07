@@ -89,7 +89,6 @@ export default function Contact() {
       <div className="shell section">
         <div className="contact-grid">
           <div className="contact-copy">
-            <span className="eyebrow">04 / GET IN TOUCH</span>
             <h2>
               Good things start
               <br />

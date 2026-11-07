@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
-import { ArrowUpRight, Code2, Menu, X } from "lucide-react";
+import { ArrowUpRight, Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const links = ["About", "Skills", "Projects", "Contact"];
@@ -32,9 +32,6 @@ export default function Navbar() {
     <header className="site-header">
       <nav className="shell nav-inner" aria-label="Main navigation">
         <a href="#hero" className="brand" onClick={() => setOpen(false)}>
-          <span className="brand-icon">
-            <Code2 size={19} />
-          </span>
           egar<span className="text-muted-foreground">works</span>
           <span className="brand-dot">.</span>
         </a>

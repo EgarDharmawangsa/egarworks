@@ -3,7 +3,6 @@ export default function About() {
   return (
     <section className="shell section" id="about">
       <div className="section-heading">
-        <span className="eyebrow">01 / ABOUT ME</span>
         <h2>
           A little about
           <br />
@@ -48,7 +47,6 @@ export default function About() {
                 <Icon size={19} />
               </span>
               <div>
-                <span>{label}</span>
                 <strong>{value}</strong>
               </div>
             </div>
