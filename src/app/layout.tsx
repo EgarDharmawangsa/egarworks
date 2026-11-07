@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
 import DotPattern from "@/components/ui/dot-pattern";
+import ScrollAnimations from "@/components/scroll-animations";
 import { siteConfig } from "@/config/site";
 import "./globals.css";
 
@@ -40,6 +41,7 @@ export default function RootLayout({
     <html lang="en" className={`dark ${inter.variable}`}>
       <body>
         <DotPattern />
+        <ScrollAnimations />
         <a className="skip-link" href="#main">
           Skip to content
         </a>

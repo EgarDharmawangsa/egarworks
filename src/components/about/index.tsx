@@ -2,7 +2,7 @@ import { Code2, GraduationCap, Layers3, MapPin } from "lucide-react";
 export default function About() {
   return (
     <section className="shell section" id="about">
-      <div className="section-heading">
+      <div className="section-heading" data-aos="fade-up">
         <span className="eyebrow">01 / ABOUT ME</span>
         <h2>
           A little about
@@ -11,7 +11,7 @@ export default function About() {
         </h2>
       </div>
       <div className="about-grid">
-        <div className="about-copy">
+        <div className="about-copy" data-aos="fade-up">
           <p>
             I enjoy connecting good design with reliable code to build things
             that are useful, with a focus on functional, intuitive web
@@ -42,14 +42,21 @@ export default function About() {
               value: "Functional & well-structured",
             },
             { icon: MapPin, label: "BASED IN", value: "Bali, Indonesia" },
-          ].map(({ icon: Icon, label, value }) => (
-            <div className="detail" key={label}>
-              <span className="detail-icon">
-                <Icon size={19} />
-              </span>
-              <div>
-                <span>{label}</span>
-                <strong>{value}</strong>
+          ].map(({ icon: Icon, label, value }, index) => (
+            <div
+              className="reveal-card"
+              key={label}
+              data-aos="fade-up"
+              data-aos-delay={(index % 2) * 100}
+            >
+              <div className="detail">
+                <span className="detail-icon">
+                  <Icon size={19} />
+                </span>
+                <div>
+                  <span>{label}</span>
+                  <strong>{value}</strong>
+                </div>
               </div>
             </div>
           ))}

@@ -6,7 +6,7 @@ export default function Hero() {
   const [firstName, ...lastName] = siteConfig.owner.split(" ");
   return (
     <section className="shell hero" id="hero">
-      <div className="hero-copy">
+      <div className="hero-copy" data-aos="fade-up">
         <p className="hero-greeting">Hi, I’m</p>
         <h1>
           {firstName}
@@ -32,7 +32,7 @@ export default function Hero() {
           </Button>
         </div>
       </div>
-      <div className="hero-visual">
+      <div className="hero-visual" data-aos="fade-up" data-aos-delay="150">
         <div className="portrait-frame">
           <div className="portrait-topline">
             <span className="window-dots" aria-hidden="true">

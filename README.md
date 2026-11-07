@@ -48,7 +48,7 @@ The handler validates fields on the server, limits request bodies to 24 KB, reje
 - `src/app/globals.css`: theme tokens, layout, responsive styles, and reduced-motion preferences.
 - `public/`: profile image, project screenshots, and downloadable CV.
 
-The page content remains visible without animation libraries. The mobile navigation supports Escape and closes after selecting a section. The contact form provides associated labels, native validation, pending states, and live feedback.
+AOS adds subtle, once-only scroll reveals. Content remains visible before initialization, without JavaScript, and when reduced motion is requested. Animations refresh after client-side navigation. The mobile navigation supports Escape and closes after selecting a section. The contact form provides associated labels, native validation, pending states, and live feedback.
 
 ## Visual style
 

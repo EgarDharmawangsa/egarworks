@@ -95,7 +95,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
 export default function Projects() {
   return (
     <section className="shell section" id="projects">
-      <div className="section-heading heading-row">
+      <div className="section-heading heading-row" data-aos="fade-up">
         <div>
           <span className="eyebrow">03 / SELECTED WORK</span>
           <h2>
@@ -108,7 +108,14 @@ export default function Projects() {
       </div>
       <div className="projects-grid">
         {projects.map((project, index) => (
-          <ProjectCard key={project.title} project={project} index={index} />
+          <div
+            className="reveal-card"
+            key={project.title}
+            data-aos="fade-up"
+            data-aos-delay={(index % 3) * 100}
+          >
+            <ProjectCard project={project} index={index} />
+          </div>
         ))}
       </div>
     </section>

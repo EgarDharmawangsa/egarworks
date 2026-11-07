@@ -1,5 +1,6 @@
 @import "tailwindcss";
 @import "tw-animate-css";
+@import "aos/dist/aos.css";
 @custom-variant dark (&:is(.dark *));
 @theme inline {
   --font-sans: var(--font-inter);
@@ -1038,4 +1039,32 @@ h3 {
   line-height: 1.8;
   margin-block: 24px;
   max-width: 500px;
+}
+
+/* Scroll animation is an enhancement; content is visible before JS initializes. */
+html:not(.aos-enabled) [data-aos],
+[data-aos]:focus-within {
+  opacity: 1 !important;
+  transform: none !important;
+  transition: none !important;
+  pointer-events: auto !important;
+}
+html.aos-enabled [data-aos="fade-up"] {
+  transform: translate3d(0, 20px, 0);
+}
+html.aos-enabled [data-aos="fade-up"].aos-animate {
+  transform: none;
+}
+.reveal-card > .project-card,
+.reveal-card > .skill-category,
+.reveal-card > .detail {
+  height: 100%;
+}
+@media (prefers-reduced-motion: reduce) {
+  html [data-aos] {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+    pointer-events: auto !important;
+  }
 }
