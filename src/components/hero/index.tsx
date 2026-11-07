@@ -11,7 +11,7 @@ export default function Hero() {
         <h1>
           {firstName}
           <br />
-          {lastName.join(" ")}
+          <span className="muted-heading">{lastName.join(" ")}</span>
           <span className="blue-dot">.</span>
         </h1>
         <p className="hero-role">{siteConfig.role}</p>
