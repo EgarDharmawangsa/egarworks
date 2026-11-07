@@ -218,9 +218,9 @@ h1 {
 }
 .portrait-topline {
   height: 36px;
-  display: flex;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
   align-items: center;
-  justify-content: space-between;
   padding: 0 12px;
   font-size: 8px;
   color: #9a9eac;
@@ -228,6 +228,7 @@ h1 {
 }
 .window-dots {
   display: flex;
+  justify-self: start;
   gap: 4px;
 }
 .window-dots i {
