@@ -11,7 +11,7 @@ const socialIcons = {
   instagram: FaInstagram,
   whatsapp: FaWhatsapp,
 };
-export default function Contact({ emailEnabled }: { emailEnabled: boolean }) {
+export default function Contact() {
   const [loading, setLoading] = useState(false);
   const submitting = useRef(false);
   const [status, setStatus] = useState<{
@@ -125,115 +125,88 @@ export default function Contact({ emailEnabled }: { emailEnabled: boolean }) {
             </div>
           </div>
           <div className="contact-form-card">
-            <h3>
-              {emailEnabled
-                ? "Send a message"
-                : "Let’s make something great together."}
-            </h3>
-            {emailEnabled ? (
-              <>
-                <p className="contact-form-intro">
-                  Let’s make something great together.
-                </p>
-                <form onSubmit={sendEmail} aria-busy={loading}>
-                  <div className="honeypot" aria-hidden="true">
-                    <label htmlFor="contact-website">
-                      Leave this field empty
-                    </label>
-                    <input
-                      id="contact-website"
-                      name="website"
-                      tabIndex={-1}
-                      autoComplete="off"
-                    />
-                  </div>
-                  <fieldset disabled={loading} className="contact-fields">
-                    <div className="form-field">
-                      <label htmlFor="contact-name">Your name</label>
-                      <input
-                        id="contact-name"
-                        name="name"
-                        autoComplete="name"
-                        placeholder="How should I call you?"
-                        required
-                        maxLength={CONTACT_LIMITS.name}
-                      />
-                    </div>
-                    <div className="form-field">
-                      <label htmlFor="contact-email">Email address</label>
-                      <input
-                        id="contact-email"
-                        name="email"
-                        type="email"
-                        autoComplete="email"
-                        placeholder="you@example.com"
-                        required
-                        maxLength={CONTACT_LIMITS.email}
-                      />
-                    </div>
-                    <div className="form-field">
-                      <label htmlFor="contact-message">Message</label>
-                      <textarea
-                        id="contact-message"
-                        name="message"
-                        placeholder="Tell me a little about what you have in mind…"
-                        rows={5}
-                        required
-                        maxLength={CONTACT_LIMITS.message}
-                      />
-                    </div>
-                  </fieldset>
-                  <div aria-live="polite">
-                    {status && (
-                      <p
-                        className={
-                          status.success ? "form-success" : "form-error"
-                        }
-                        role="status"
-                      >
-                        {status.message}
-                      </p>
-                    )}
-                  </div>
-                  <Button
-                    type="submit"
-                    size="lg"
-                    className="w-full"
-                    disabled={loading}
-                  >
-                    {loading ? (
-                      <>
-                        <Loader2 className="animate-spin" />
-                        Sending…
-                      </>
-                    ) : (
-                      <>
-                        Send message
-                        <Send />
-                      </>
-                    )}
-                  </Button>
-                  <span className="form-note">
-                    Your details are only used to reply to your message.
-                  </span>
-                </form>
-              </>
-            ) : (
-              <div className="contact-direct">
-                <p>
-                  Tell me about your project, share an opportunity, or just say
-                  hello. Send me a note and let’s start a conversation.
-                </p>
-                <Button asChild size="lg">
-                  <a href={`mailto:${siteConfig.email}`}>
-                    <Mail />
-                    Write an email
-                    <ArrowUpRight />
-                  </a>
-                </Button>
-                <span>{siteConfig.email}</span>
+            <h3>Send a message</h3>
+            <p className="contact-form-intro">
+              Let’s make something great together.
+            </p>
+            <form onSubmit={sendEmail} aria-busy={loading}>
+              <div className="honeypot" aria-hidden="true">
+                <label htmlFor="contact-website">Leave this field empty</label>
+                <input
+                  id="contact-website"
+                  name="website"
+                  tabIndex={-1}
+                  autoComplete="off"
+                />
               </div>
-            )}
+              <fieldset disabled={loading} className="contact-fields">
+                <div className="form-field">
+                  <label htmlFor="contact-name">Your name</label>
+                  <input
+                    id="contact-name"
+                    name="name"
+                    autoComplete="name"
+                    placeholder="How should I call you?"
+                    required
+                    maxLength={CONTACT_LIMITS.name}
+                  />
+                </div>
+                <div className="form-field">
+                  <label htmlFor="contact-email">Email address</label>
+                  <input
+                    id="contact-email"
+                    name="email"
+                    type="email"
+                    autoComplete="email"
+                    placeholder="you@example.com"
+                    required
+                    maxLength={CONTACT_LIMITS.email}
+                  />
+                </div>
+                <div className="form-field">
+                  <label htmlFor="contact-message">Message</label>
+                  <textarea
+                    id="contact-message"
+                    name="message"
+                    placeholder="Tell me a little about what you have in mind…"
+                    rows={5}
+                    required
+                    maxLength={CONTACT_LIMITS.message}
+                  />
+                </div>
+              </fieldset>
+              <div aria-live="polite">
+                {status && (
+                  <p
+                    className={status.success ? "form-success" : "form-error"}
+                    role="status"
+                  >
+                    {status.message}
+                  </p>
+                )}
+              </div>
+              <Button
+                type="submit"
+                size="lg"
+                className="w-full"
+                disabled={loading}
+              >
+                {loading ? (
+                  <>
+                    <Loader2 className="animate-spin" />
+                    Sending…
+                  </>
+                ) : (
+                  <>
+                    Send message
+                    <Send />
+                  </>
+                )}
+              </Button>
+              <span className="form-note">
+                Your details are only used to reply to your message.
+              </span>
+            </form>
           </div>
         </div>
       </div>

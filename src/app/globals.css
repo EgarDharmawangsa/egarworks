@@ -1039,21 +1039,3 @@ h3 {
   margin-block: 24px;
   max-width: 500px;
 }
-
-.contact-direct {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 24px;
-  padding-block: 30px 10px;
-}
-.contact-direct p {
-  font-size: 14px;
-  line-height: 1.9;
-  color: var(--muted-foreground);
-}
-.contact-direct > span {
-  color: var(--muted-foreground);
-  font-size: 12px;
-  overflow-wrap: anywhere;
-}
