@@ -1,68 +1,117 @@
 import Image from "next/image";
-import "./projects.css";
-import projectsData from "@/data/projects/projectsData.json";
+import {
+  ArrowUpRight,
+  Boxes,
+  CloudSun,
+  Code2,
+  FileScan,
+  GraduationCap,
+  MessageSquare,
+  Sparkles,
+  Utensils,
+} from "lucide-react";
+import projects from "@/data/projects/projectsData.json";
 
-interface Project {
-    title: string;
-    description: string;
-    image: string;
-    link: string;
+const icons = {
+  academic: GraduationCap,
+  inventory: Boxes,
+  scan: FileScan,
+  ai: Sparkles,
+  forum: MessageSquare,
+  weather: CloudSun,
+  recipe: Utensils,
+};
+const colors = new Set([
+  "indigo",
+  "amber",
+  "blue",
+  "violet",
+  "green",
+  "sky",
+  "orange",
+]);
+
+type Project = (typeof projects)[number];
+
+function ProjectCard({ project, index }: { project: Project; index: number }) {
+  const Icon = icons[project.icon as keyof typeof icons] ?? Code2;
+  const color = colors.has(project.color) ? project.color : "blue";
+  const publicLink = /^https?:\/\//i.test(project.link) ? project.link : null;
+
+  return (
+    <article className={`project-card project-${color}`}>
+      <div className="project-preview">
+        {project.image ? (
+          <Image
+            src={project.image}
+            alt={`${project.title} screenshot`}
+            fill
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+            className="project-image"
+          />
+        ) : (
+          <>
+            <span className="project-preview-type">{project.category}</span>
+            <div className="project-emblem">
+              <Icon size={34} strokeWidth={1.4} />
+            </div>
+            <span className="project-preview-title">{project.title}</span>
+            <span className="project-index">
+              {String(index + 1).padStart(2, "0")}
+            </span>
+          </>
+        )}
+      </div>
+      <div className="project-body">
+        <div className="project-title-row">
+          <h3>{project.title}</h3>
+          {publicLink && (
+            <a
+              href={publicLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`Visit ${project.title}`}
+              className="project-arrow"
+            >
+              <ArrowUpRight size={19} />
+            </a>
+          )}
+        </div>
+        <p>{project.description}</p>
+        <div className="project-bottom">
+          <div className="tags">
+            {project.tags.map((tag) => (
+              <span key={tag}>{tag}</span>
+            ))}
+          </div>
+          {!publicLink && (
+            <span className="private-project">Demo unavailable</span>
+          )}
+        </div>
+      </div>
+    </article>
+  );
 }
 
-const ProjectCard: React.FC<Project> = ({
-    title,
-    description,
-    image,
-    link,
-}) => {
-    return (
-        <div data-aos="fade-up">
-            <div className="project-card border border-[#27272a] hover:border-[#4b5563] hover:shadow-[0_8px_24px_rgba(1,57,211,0.5)] hover:-translate-y-[5px] transition-all duration-300 ease-in-out rounded-lg overflow-hidden">
-                {image ? (
-                    <Image
-                        src={image}
-                        alt={title}
-                        width={800}
-                        height={500}
-                        className="w-full h-auto"
-                    />
-                ) : (
-                    <div className="bg-[rgb(10,10,10)] border-b border-b-[#27272a] flex items-center justify-center h-[150px]">
-                        <span className="text-gray-500">No Image</span>
-                    </div>
-                )}
-
-                <div className="relative project-caption pt-3 px-4 pb-4">
-                    <h2 className="font-bold mb-2 text-lg">{title}</h2>
-                    <p className="text-gray-400 mb-4 text-[14px] leading-6">{description}</p>
-                    <a
-                        href={link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-block bg-[rgb(1,57,211)] text-center text-[15px] w-[100%] sm:w-20 p-2 rounded-full hover:bg-blue-700 transition-colors duration-300 ease-in-out"
-                    >
-                        Visit
-                    </a>
-                </div>
-            </div>
+export default function Projects() {
+  return (
+    <section className="shell section" id="projects">
+      <div className="section-heading heading-row">
+        <div>
+          <span className="eyebrow">03 / SELECTED WORK</span>
+          <h2>
+            Ideas, brought to life<span className="blue-dot">.</span>
+          </h2>
         </div>
-    );
-};
-
-const Projects: React.FC = () => {
-    const projects: Project[] = projectsData;
-
-    return (
-        <section className="section-container" id="projects">
-            <h1 className="mb-7 font-bold text-3xl">Projects.</h1>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 items-start">
-                {projects.map((project, index) => (
-                    <ProjectCard key={index} {...project} />
-                ))}
-            </div>
-        </section>
-    );
-};
-
-export default Projects;
+        <span className="count-badge">
+          {String(projects.length).padStart(2, "0")} projects
+        </span>
+      </div>
+      <div className="projects-grid">
+        {projects.map((project, index) => (
+          <ProjectCard key={project.title} project={project} index={index} />
+        ))}
+      </div>
+    </section>
+  );
+}

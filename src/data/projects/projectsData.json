@@ -1,44 +1,72 @@
 [
-    {
-        "title": "SIAKAD RASDA",
-        "description": "Academic Information System of Saraswati 2 Denpasar Elementary School Based on Website Using Laravel Framework as Final Project of ITB STIKOM Bali.",
-        "image": "",
-        "link": ""
-    },
-    {
-        "title": "InventoriKu",
-        "description": "Simple inventory website built using Laravel framework.",
-        "image": "",
-        "link": ""
-    },
-    {
-        "title": "EyeOn Scan",
-        "description": "Simple Optical Character Recognition (OCR) website using Tesseract library.",
-        "image": "",
-        "link": "https://eyeon-scan.vercel.app/"
-    },
-    {
-        "title": "EyeOn AI",
-        "description": "Simple chatAI website using Google Gemini 2.0 Flash model from OpenRouter API.",
-        "image": "",
-        "link": ""
-    },
-    {
-        "title": "EyeOn Forum",
-        "description": "Simple chat room using Firebase Realtime Database.",
-        "image": "/images/projects_screenshot/eyeon_forum.png",
-        "link": "https://eyeonforum-dfdc2.web.app"
-    },
-    {
-        "title": "EyeOn Weather",
-        "description": "Simple weather forecast website using OpenWeatherMap API.",
-        "image": "",
-        "link": "https://eyeonweather-fdbc1.web.app"
-    },
-    {
-        "title": "Generate Recipe",
-        "description": "Simple recipe generator website using Deepseek v3.1 model from OpenRouter API.",
-        "image": "",
-        "link": "https://generate-recipe.vercel.app"
-    }
+  {
+    "title": "SIAKAD RASDA",
+    "description": "Academic Information System of Saraswati 2 Denpasar Elementary School Based on Website Using Laravel Framework as Final Project of ITB STIKOM Bali.",
+    "image": "",
+    "link": "",
+    "icon": "academic",
+    "category": "ACADEMIC PLATFORM",
+    "tags": ["Laravel", "Academic system"],
+    "color": "indigo"
+  },
+  {
+    "title": "InventoriKu",
+    "description": "Simple inventory website built using Laravel framework.",
+    "image": "",
+    "link": "",
+    "icon": "inventory",
+    "category": "INVENTORY MANAGEMENT",
+    "tags": ["Laravel", "Web application"],
+    "color": "amber"
+  },
+  {
+    "title": "EyeOn Scan",
+    "description": "Simple Optical Character Recognition (OCR) website using Tesseract library.",
+    "image": "",
+    "link": "https://eyeon-scan.vercel.app/",
+    "icon": "scan",
+    "category": "OCR TOOL",
+    "tags": ["Tesseract", "OCR"],
+    "color": "blue"
+  },
+  {
+    "title": "EyeOn AI",
+    "description": "Simple chatAI website using Google Gemini 2.0 Flash model from OpenRouter API.",
+    "image": "",
+    "link": "",
+    "icon": "ai",
+    "category": "AI ASSISTANT",
+    "tags": ["OpenRouter", "Gemini"],
+    "color": "violet"
+  },
+  {
+    "title": "EyeOn Forum",
+    "description": "Simple chat room using Firebase Realtime Database.",
+    "image": "/images/projects_screenshot/eyeon_forum.png",
+    "link": "https://eyeonforum-dfdc2.web.app",
+    "icon": "forum",
+    "category": "REALTIME CHAT",
+    "tags": ["Firebase", "Realtime database"],
+    "color": "green"
+  },
+  {
+    "title": "EyeOn Weather",
+    "description": "Simple weather forecast website using OpenWeatherMap API.",
+    "image": "",
+    "link": "https://eyeonweather-fdbc1.web.app",
+    "icon": "weather",
+    "category": "WEATHER APP",
+    "tags": ["OpenWeatherMap", "API"],
+    "color": "sky"
+  },
+  {
+    "title": "Generate Recipe",
+    "description": "Simple recipe generator website using Deepseek v3.1 model from OpenRouter API.",
+    "image": "",
+    "link": "https://generate-recipe.vercel.app",
+    "icon": "recipe",
+    "category": "RECIPE GENERATOR",
+    "tags": ["Deepseek", "OpenRouter"],
+    "color": "orange"
+  }
 ]

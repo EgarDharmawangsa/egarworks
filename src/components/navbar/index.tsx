@@ -1,76 +1,85 @@
 "use client";
+import { useEffect, useState } from "react";
+import { ArrowUpRight, Code2, Menu, X } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
-import "./navbar.css";
-import { useState, useEffect } from "react";
-
-const Navbar: React.FC = () => {
-    const [isOpen, setIsOpen] = useState<boolean>(false);
-    const [activeSection, setActiveSection] = useState<string>("");
-
-    useEffect(() => {
-        const sections = document.querySelectorAll<HTMLElement>("section");
-
-        const observer = new IntersectionObserver((entries => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    setActiveSection(entry.target.id);
-                }
-            });
-        }
-        ), { threshold: 0.6 });
-
-        sections.forEach(section => observer.observe(section));
-
-        return () => {
-            sections.forEach(section => observer.unobserve(section));
-        }
-    }, []);
-
-    useEffect(() => {
-        const handleResize = (): void => {
-            if (window.innerWidth >= 768) {
-                setIsOpen(false);
-            }
-        };
-
-        window.addEventListener("resize", handleResize);
-
-        return () => {
-            window.removeEventListener("resize", handleResize);
-        };
-    }, []);
-
-    return (
-        <nav className="bg-[rgba(10,10,10,0.8)] text-white border border-[#27272a] hover:border-[#4b5563] hover:bg-[rgba(19,19,19,0.9)] transition-all duration-300 ease-in-out px-7 fixed w-[90%] z-10 top-5 left-1/2 -translate-x-1/2 rounded-[15px] backdrop-blur-md shadow-[0px_5px_15px_rgba(0,0,0,0.7)]">
-            <div className="flex justify-between items-center h-16">
-                <a href="#hero" className="brand-name text-lg">EGARWORKS</a>
-
-                <div className="hidden md:flex space-x-6">
-                    <a href="#about" className={activeSection === "about" ? "active" : ""}>About</a>
-                    <a href="#skills" className={activeSection === "skills" ? "active" : ""}>Skills</a>
-                    <a href="#projects" className={activeSection === "projects" ? "active" : ""}>Projects</a>
-                    <a href="#contact" className={activeSection === "contact" ? "active" : ""}>Contact</a>
-                </div>
-
-                <div className="md:hidden">
-                    <button
-                        onClick={() => setIsOpen(!isOpen)}
-                        className="focus:outline-none text-2xl"
-                        aria-label="Toggle menu"
-                    >
-                        ☰
-                    </button>
-                </div>
-            </div>
-
-            <div className={`${isOpen ? "max-h-64 pb-4" : "max-h-0"} overflow-hidden transition-all duration-500 ease-in-out md:hidden`}>
-                <a href="#about" className={`${activeSection === "about" ? "active" : ""} block py-2`}>About</a>
-                <a href="#skills" className={`${activeSection === "skills" ? "active" : ""} block py-2`}>Skills</a>
-                <a href="#projects" className={`${activeSection === "projects" ? "active" : ""} block py-2`}>Projects</a>
-                <a href="#contact" className={`${activeSection === "contact" ? "active" : ""} block py-2`}>Contact</a>
-            </div>
-        </nav>
+const links = ["About", "Skills", "Projects", "Contact"];
+export default function Navbar() {
+  const [open, setOpen] = useState(false);
+  const [active, setActive] = useState("");
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) setActive(entry.target.id);
+        });
+      },
+      { rootMargin: "-15% 0px -55% 0px", threshold: 0 },
     );
-};
-
-export default Navbar;
+    document
+      .querySelectorAll("main section[id]")
+      .forEach((section) => observer.observe(section));
+    const close = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setOpen(false);
+    };
+    window.addEventListener("keydown", close);
+    return () => {
+      observer.disconnect();
+      window.removeEventListener("keydown", close);
+    };
+  }, []);
+  return (
+    <header className="site-header">
+      <nav className="shell nav-inner" aria-label="Main navigation">
+        <a href="#hero" className="brand" onClick={() => setOpen(false)}>
+          <span className="brand-icon">
+            <Code2 size={19} />
+          </span>
+          egar<span className="text-muted-foreground">works</span>
+          <span className="brand-dot">.</span>
+        </a>
+        <div className="desktop-nav">
+          {links.map((label) => (
+            <a
+              key={label}
+              href={`#${label.toLowerCase()}`}
+              aria-current={
+                active === label.toLowerCase() ? "location" : undefined
+              }
+            >
+              {label}
+            </a>
+          ))}
+        </div>
+        <Button asChild variant="outline" size="sm" className="desktop-cta">
+          <a href="mailto:dharmawangsaegar@gmail.com">
+            Let’s talk <ArrowUpRight />
+          </a>
+        </Button>
+        <Button
+          variant="ghost"
+          size="icon"
+          className="mobile-toggle"
+          aria-label={open ? "Close menu" : "Open menu"}
+          aria-expanded={open}
+          aria-controls="mobile-nav"
+          onClick={() => setOpen(!open)}
+        >
+          {open ? <X /> : <Menu />}
+        </Button>
+        <div id="mobile-nav" className="mobile-nav" hidden={!open}>
+          {links.map((label) => (
+            <a
+              key={label}
+              href={`#${label.toLowerCase()}`}
+              onClick={() => setOpen(false)}
+            >
+              {label}
+              <ArrowUpRight size={16} />
+            </a>
+          ))}
+        </div>
+      </nav>
+    </header>
+  );
+}

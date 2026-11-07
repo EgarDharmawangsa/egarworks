@@ -1,61 +1,88 @@
-"use client"
-
-import { useState } from "react";
 import Image from "next/image";
-import "./hero.css";
-
-const Hero: React.FC = () => {
-    const [loading, setLoading] = useState<boolean>(false);
-
-    const fileDownload = () => {
-        setLoading(true);
-        setTimeout(() => {
-            setLoading(false);
-        }, 3000);
-        
-        const link = document.createElement("a");
-        link.href = "/files/(CV) I Komang Egar Suarama Dharmawangsa.pdf";
-        link.download = "(CV) I Komang Egar Suarama Dharmawangsa.pdf";
-        link.click();
-    };
-
-    return (
-        <section className="section-container" id="hero">
-            <div className="mt-28 mb-10 flex flex-col-reverse md:flex-row items-center">
-                <div className="md:w-1/2 mt-10 md:mt-0 md:mx-4 flex justify-center">
-                    <div>
-                        <span data-aos="fade-right" className="block mb-1">Hello👋, I&apos;m</span>
-                        <h1 data-aos="fade-right" className="text-4xl sm:text-5xl mb-5 font-bold leading-11 md:leading-16">
-                            Egar Dharmawangsa
-                        </h1>
-                        <p className="text-[22px] sm:text-[25px] bg-[rgb(1,57,211)] overflow-hidden whitespace-nowrap hero-role">
-                            Full-Stack Web Developer
-                        </p>
-                        <div data-aos="zoom-in">
-                            <button 
-                                onClick={fileDownload} 
-                                className="inline-block mt-8 py-2 px-6 text-[15px] bg-black border border-white hover:bg-[rgb(1,57,211)] hover:shadow-[0_0_24px_rgba(1,57,211,0.5)] transition-all duration-300 ease-in-out rounded-full" 
-                                disabled={loading}
-                            >
-                                {loading ? "Downloading..." : "Download CV"}
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <div className="md:w-1/2 my-10 mx-4">
-                    <Image 
-                        data-aos="zoom-in" 
-                        src="/images/profile/profile.jpg" 
-                        alt="Profile Image" 
-                        width={350} 
-                        height={350} 
-                        className="rounded-full block hero-image mx-auto" 
-                    />
-                </div>
+import { ArrowDown, ArrowUpRight, Download, MapPin } from "lucide-react";
+import { Button } from "@/components/ui/button";
+export default function Hero() {
+  return (
+    <section className="shell hero" id="hero">
+      <div className="hero-copy">
+        <span className="eyebrow">
+          <span className="status-dot" />
+          Full-stack web developer
+        </span>
+        <h1>
+          Thoughtful code.
+          <br />
+          <span className="muted-heading">Meaningful</span>
+          <br />
+          digital experiences<span className="blue-dot">.</span>
+        </h1>
+        <p className="hero-intro">
+          Hi, I’m <strong>Egar Dharmawangsa</strong> — a developer who turns
+          ideas into functional, intuitive websites. Based in Bali, building for
+          the web.
+        </p>
+        <div className="hero-actions">
+          <Button asChild size="lg">
+            <a href="#projects">
+              Explore my work <ArrowUpRight />
+            </a>
+          </Button>
+          <Button asChild size="lg" variant="outline">
+            <a
+              href="/files/(CV) I Komang Egar Suarama Dharmawangsa.pdf"
+              download
+            >
+              Download CV <Download />
+            </a>
+          </Button>
+        </div>
+        <div className="hero-meta">
+          <span>
+            <MapPin size={14} />
+            Bali, Indonesia
+          </span>
+          <span className="meta-divider" />
+          Laravel · React · TypeScript
+        </div>
+      </div>
+      <div className="hero-visual">
+        <div className="portrait-frame">
+          <div className="portrait-topline">
+            <span className="window-dots">
+              <i />
+              <i />
+              <i />
+            </span>
+            <span>the developer behind the code</span>
+            <span className="tiny-dot" />
+          </div>
+          <div className="portrait-image">
+            <Image
+              src="/images/profile/profile.jpg"
+              alt="Egar Dharmawangsa"
+              width={600}
+              height={650}
+              preload
+              sizes="(max-width: 767px) 90vw, 420px"
+            />
+          </div>
+          <div className="portrait-caption">
+            <div>
+              <strong>Egar Dharmawangsa</strong>
+              <span>Full-stack web developer</span>
             </div>
-        </section>
-    );
+            <span className="code-mark">&lt;/&gt;</span>
+          </div>
+        </div>
+        <div className="portrait-note">
+          <span className="status-dot" />
+          Crafting ideas into reality
+        </div>
+      </div>
+      <a className="scroll-hint" href="#about">
+        <ArrowDown size={14} />
+        Scroll to explore
+      </a>
+    </section>
+  );
 }
-
-export default Hero;

@@ -1,43 +1,57 @@
 import StackIcon from "tech-stack-icons";
 import skillsData from "@/data/skills/skillsData.json";
-
-type Variant = "light" | "dark";
-
-interface Skill {
-    name: string;
-    variant: Variant;
-    label: string;
-}
-
-const SkillItem: React.FC<Skill> = ({ name, variant, label }) => {
-    return (
-        <div data-aos="zoom-in">
-            <div className="bg-[rgb(10,10,10)] border border-[#27272a] hover:border-[#4b5563] hover:bg-[rgb(19,19,19)] hover:shadow-[0_8px_24px_rgba(1,57,211,0.5)] hover:-translate-y-[5px] transition-all duration-300 ease-in-out rounded-full flex items-center justify-center py-4 px-5">
-                <StackIcon 
-                    name={name} 
-                    variant={variant} 
-                    className="w-[25px] h-[25px] mr-3 object-contain" 
-                />
-                <span>{label}</span>
-            </div>
+const categories = [
+  { title: "Frontend", subtitle: "Interfaces & interactions", id: "frontend" },
+  { title: "Styling", subtitle: "Design & presentation", id: "styling" },
+  { title: "Backend", subtitle: "Logic & architecture", id: "backend" },
+  {
+    title: "Database & services",
+    subtitle: "Data & persistence",
+    id: "database",
+  },
+];
+export default function Skills() {
+  return (
+    <section className="section-band" id="skills">
+      <div className="shell section">
+        <div className="section-heading heading-row">
+          <div>
+            <span className="eyebrow">02 / MY TOOLKIT</span>
+            <h2>
+              The tools I build with<span className="blue-dot">.</span>
+            </h2>
+          </div>
+          <p>
+            A practical stack for bringing ideas
+            <br className="desktop-break" /> from the first pixel to the
+            database.
+          </p>
         </div>
-    );
-};
-
-const Skills: React.FC = () => {
-    const skills = skillsData as Skill[];
-
-    return (
-        <section className="section-container" id="skills">
-            <h1 className="mb-7 font-bold text-3xl text-center">Skills.</h1>
-
-            <div className="flex flex-wrap justify-center gap-3">
-                {skills.map((skill, index) => (
-                    <SkillItem key={index} {...skill} />
-                ))}
+        <div className="skills-grid">
+          {categories.map((category) => (
+            <div className="skill-category" key={category.title}>
+              <h3>{category.title}</h3>
+              <p>{category.subtitle}</p>
+              <div className="skill-list">
+                {skillsData
+                  .filter((skill) => skill.category === category.id)
+                  .map((skill) => {
+                    return (
+                      <div className="skill-item" key={skill.name}>
+                        <StackIcon
+                          name={skill.name}
+                          variant="dark"
+                          className="size-5 shrink-0"
+                        />
+                        <span>{skill.label}</span>
+                      </div>
+                    );
+                  })}
+              </div>
             </div>
-        </section>
-    );
-};
-
-export default Skills;
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}

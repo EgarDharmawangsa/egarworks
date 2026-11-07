@@ -1,27 +1,27 @@
 import nodemailer from "nodemailer";
-import { NextResponse } from "next/server";
+import { createContactHandler } from "@/lib/contact-handler";
 
-export async function POST(req: Request) {
-    try {
-        const { name, email, message } = await req.json();
+export const runtime = "nodejs";
 
-        const transporter = nodemailer.createTransport({
-            service: "gmail",
-            auth: {
-                user: process.env.EMAIL_USER,
-                pass: process.env.EMAIL_PASS,
-            },
-        });
-
-        await transporter.sendMail({
-            from: email,
-            to: process.env.EMAIL_USER,
-            subject: `Pesan dari ${name}`,
-            text: message,
-        });
-
-        return NextResponse.json({ success: true });
-    } catch (error) {
-        return NextResponse.json({ success: false, error });
-    }
-}
+export const POST = createContactHandler({
+  isConfigured: () => Boolean(process.env.EMAIL_USER && process.env.EMAIL_PASS),
+  sendMail: async ({ name, email, message }) => {
+    const user = process.env.EMAIL_USER!;
+    const transporter = nodemailer.createTransport({
+      service: "gmail",
+      auth: { user, pass: process.env.EMAIL_PASS },
+      connectionTimeout: 10_000,
+      greetingTimeout: 10_000,
+      socketTimeout: 15_000,
+    });
+    await transporter.sendMail({
+      from: { name: "EGARWORKS Contact", address: user },
+      to: user,
+      replyTo: { name, address: email },
+      subject: `Pesan dari ${name}`,
+      text: `Name: ${name}\nEmail: ${email}\n\n${message}`,
+      disableFileAccess: true,
+      disableUrlAccess: true,
+    });
+  },
+});

@@ -1,47 +1,80 @@
 [
-    {
-        "name": "html5",
-        "variant": "light",
-        "label": "HTML"
-    },
-    {
-        "name": "css3",
-        "variant": "light",
-        "label": "CSS"
-    },
-    {
-        "name": "js",
-        "variant": "light",
-        "label": "JavaScript"
-    },
-    {
-        "name": "bootstrap5",
-        "variant": "light",
-        "label": "Bootstrap"
-    },
-    {
-        "name": "tailwindcss",
-        "variant": "light",
-        "label": "Tailwind"
-    },
-    {
-        "name": "php",
-        "variant": "light",
-        "label": "PHP"
-    },
-    {
-        "name": "laravel",
-        "variant": "light",
-        "label": "Laravel"
-    },
-    {
-        "name": "mysql",
-        "variant": "light",
-        "label": "MySQL"
-    },
-    {
-        "name": "firebase",
-        "variant": "light",
-        "label": "Firebase Realtime Database"
-    }
+  {
+    "name": "html5",
+    "variant": "light",
+    "label": "HTML",
+    "category": "frontend"
+  },
+  {
+    "name": "css3",
+    "variant": "light",
+    "label": "CSS",
+    "category": "frontend"
+  },
+  {
+    "name": "js",
+    "variant": "light",
+    "label": "JavaScript",
+    "category": "frontend"
+  },
+  {
+    "name": "typescript",
+    "variant": "light",
+    "label": "TypeScript",
+    "category": "frontend"
+  },
+  {
+    "name": "bootstrap5",
+    "variant": "light",
+    "label": "Bootstrap",
+    "category": "styling"
+  },
+  {
+    "name": "tailwindcss",
+    "variant": "light",
+    "label": "Tailwind",
+    "category": "styling"
+  },
+  {
+    "name": "react",
+    "variant": "light",
+    "label": "React",
+    "category": "frontend"
+  },
+  {
+    "name": "vuejs",
+    "variant": "light",
+    "label": "Vue.js",
+    "category": "frontend"
+  },
+  {
+    "name": "php",
+    "variant": "light",
+    "label": "PHP",
+    "category": "backend"
+  },
+  {
+    "name": "laravel",
+    "variant": "light",
+    "label": "Laravel",
+    "category": "backend"
+  },
+  {
+    "name": "mysql",
+    "variant": "light",
+    "label": "MySQL",
+    "category": "database"
+  },
+  {
+    "name": "supabase",
+    "variant": "light",
+    "label": "Supabase",
+    "category": "database"
+  },
+  {
+    "name": "firebase",
+    "variant": "light",
+    "label": "Firebase Realtime Database",
+    "category": "database"
+  }
 ]
