@@ -31,7 +31,8 @@
   --primary: #477eec;
   --muted-foreground: #9a9ba7;
   --border: #25262d;
-  --glass-background: rgb(20 22 30 / 10%);
+  --glass-opacity: 5%;
+  --glass-background: rgb(20 22 30 / var(--glass-opacity));
   --glass-border: rgb(164 184 226 / 24%);
   --glass-shadow: none;
 }
@@ -81,7 +82,7 @@ button:focus-visible {
   padding-block: 100px;
 }
 .section-band {
-  background: rgb(14 15 19 / 16%);
+  background: rgb(14 15 19 / var(--glass-opacity));
   border-block: 1px solid rgb(164 184 226 / 8%);
 }
 .site-header {
@@ -980,7 +981,7 @@ h3 {
   }
 
   .site-header {
-    background-color: rgb(11 12 15 / 10%);
+    background-color: rgb(11 12 15 / var(--glass-opacity));
     -webkit-backdrop-filter: blur(12px);
     backdrop-filter: blur(12px);
   }
@@ -992,7 +993,7 @@ h3 {
 
 @media (max-width: 767px) {
   .mobile-nav:not([hidden]) {
-    background: rgb(16 19 27 / 97%);
+    background: rgb(16 19 27 / var(--glass-opacity));
     border-color: var(--glass-border);
     box-shadow: var(--glass-shadow);
   }
