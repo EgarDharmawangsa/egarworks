@@ -200,38 +200,16 @@ export default function DotPattern({
 
         const radius = (dotSize / 2) * scale;
 
-        // DOT
+        ctx.save();
+        if (glow > 0) {
+          ctx.shadowColor = `rgba(${glowRgb.r}, ${glowRgb.g}, ${glowRgb.b}, ${glow * 0.5})`;
+          ctx.shadowBlur = radius * 4;
+        }
         ctx.beginPath();
         ctx.arc(dot.x, dot.y, radius, 0, Math.PI * 2);
         ctx.fillStyle = `rgba(${r}, ${g}, ${b}, ${opacity})`;
         ctx.fill();
-
-        // GLOW
-        if (glow > 0) {
-          const gradient = ctx.createRadialGradient(
-            dot.x,
-            dot.y,
-            0,
-            dot.x,
-            dot.y,
-            radius * 4,
-          );
-
-          gradient.addColorStop(
-            0,
-            `rgba(${glowRgb.r}, ${glowRgb.g}, ${glowRgb.b}, ${glow * 0.4})`,
-          );
-
-          gradient.addColorStop(
-            1,
-            `rgba(${glowRgb.r}, ${glowRgb.g}, ${glowRgb.b}, 0)`,
-          );
-
-          ctx.beginPath();
-          ctx.arc(dot.x, dot.y, radius * 4, 0, Math.PI * 2);
-          ctx.fillStyle = gradient;
-          ctx.fill();
-        }
+        ctx.restore();
       }
 
       animationRef.current = animate() ? requestAnimationFrame(draw) : null;
@@ -276,8 +254,6 @@ export default function DotPattern({
         className="absolute inset-0 w-full h-full"
         aria-hidden="true"
       />
-
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent to-background/25" />
 
       {children && (
         <div className="relative z-10 h-full w-full pointer-events-none">
