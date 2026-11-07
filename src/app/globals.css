@@ -1021,14 +1021,14 @@ h3 {
   .contact-form-card,
   .portrait-note {
     background-color: var(--glass-background);
-    -webkit-backdrop-filter: blur(20px) saturate(160%);
-    backdrop-filter: blur(20px) saturate(160%);
+    -webkit-backdrop-filter: blur(8px) saturate(120%);
+    backdrop-filter: blur(8px) saturate(120%);
   }
 
   .site-header {
     background-color: rgb(11 14 20 / 42%);
-    -webkit-backdrop-filter: blur(28px) saturate(170%);
-    backdrop-filter: blur(28px) saturate(170%);
+    -webkit-backdrop-filter: blur(12px) saturate(125%);
+    backdrop-filter: blur(12px) saturate(125%);
   }
 
   .contact-form-card {
