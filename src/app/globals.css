@@ -31,10 +31,9 @@
   --primary: #477eec;
   --muted-foreground: #9a9ba7;
   --border: #25262d;
-  --glass-background: rgb(18 24 36 / 38%);
+  --glass-background: rgb(20 22 30 / 88%);
   --glass-border: rgb(164 184 226 / 24%);
-  --glass-shadow:
-    inset 0 1px 0 rgb(255 255 255 / 9%), 0 12px 36px rgb(0 0 0 / 20%);
+  --glass-shadow: none;
 }
 * {
   box-sizing: border-box;
@@ -965,9 +964,7 @@ h3 {
 .skill-category:hover,
 .project-card:hover {
   border-color: rgb(132 168 237 / 32%);
-  box-shadow:
-    inset 0 1px 0 rgb(255 255 255 / 7%),
-    0 16px 40px rgb(0 0 0 / 20%);
+  box-shadow: none;
 }
 
 @supports (backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px)) {
@@ -978,18 +975,18 @@ h3 {
   .contact-form-card,
   .portrait-note {
     background-color: var(--glass-background);
-    -webkit-backdrop-filter: blur(8px) saturate(120%);
-    backdrop-filter: blur(8px) saturate(120%);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
   }
 
   .site-header {
-    background-color: rgb(11 14 20 / 42%);
-    -webkit-backdrop-filter: blur(12px) saturate(125%);
-    backdrop-filter: blur(12px) saturate(125%);
+    background-color: rgb(11 12 15 / 90%);
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
   }
 
   .contact-form-card {
-    background-color: rgb(18 24 36 / 58%);
+    background-color: var(--glass-background);
   }
 }
 
