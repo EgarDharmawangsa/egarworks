@@ -277,7 +277,7 @@ export default function DotPattern({
         aria-hidden="true"
       />
 
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent to-background/60" />
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent to-background/25" />
 
       {children && (
         <div className="relative z-10 h-full w-full pointer-events-none">
