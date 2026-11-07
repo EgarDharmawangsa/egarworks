@@ -31,7 +31,7 @@
   --primary: #477eec;
   --muted-foreground: #9a9ba7;
   --border: #25262d;
-  --glass-background: rgb(20 22 30 / 88%);
+  --glass-background: rgb(20 22 30 / 62%);
   --glass-border: rgb(164 184 226 / 24%);
   --glass-shadow: none;
 }
@@ -980,7 +980,7 @@ h3 {
   }
 
   .site-header {
-    background-color: rgb(11 12 15 / 90%);
+    background-color: rgb(11 12 15 / 65%);
     -webkit-backdrop-filter: blur(12px);
     backdrop-filter: blur(12px);
   }
