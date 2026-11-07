@@ -3,23 +3,21 @@ import { ArrowDown, ArrowUpRight, Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { siteConfig } from "@/config/site";
 export default function Hero() {
+  const [firstName, ...lastName] = siteConfig.owner.split(" ");
   return (
     <section className="shell hero" id="hero">
       <div className="hero-copy">
-        <span className="eyebrow">
-          <span className="status-dot" />
-          {siteConfig.role}
-        </span>
+        <p className="hero-greeting">Hi, I’m</p>
         <h1>
-          Thoughtful code.
+          {firstName}
           <br />
-          <span className="muted-heading">Meaningful</span>
-          <br />
-          digital experiences<span className="blue-dot">.</span>
+          {lastName.join(" ")}
+          <span className="blue-dot">.</span>
         </h1>
+        <p className="hero-role">{siteConfig.role}</p>
         <p className="hero-intro">
-          Hi, I’m <strong>{siteConfig.owner}</strong> — a developer who turns
-          ideas into functional, intuitive websites.
+          Based in Bali, I build functional, intuitive websites with thoughtful
+          design and reliable code.
         </p>
         <div className="hero-actions">
           <Button asChild size="lg">

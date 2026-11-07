@@ -149,25 +149,6 @@ button:focus-visible {
   letter-spacing: 1.5px;
   color: #969aaa;
 }
-.hero .eyebrow {
-  display: inline-flex;
-  letter-spacing: 0.4px;
-  font-size: 12px;
-  padding: 8px 12px;
-  border: 1px solid var(--border);
-  border-radius: 6px;
-  background: #121419;
-  color: #bcc0cc;
-}
-.status-dot {
-  width: 6px;
-  height: 6px;
-  display: inline-block;
-  flex-shrink: 0;
-  border-radius: 50%;
-  background: #79b79a;
-  box-shadow: 0 0 0 3px #79b79a12;
-}
 h1,
 h2,
 h3,
@@ -184,16 +165,26 @@ h1 {
 .muted-heading {
   color: #858895;
 }
+.hero-greeting {
+  color: var(--muted-foreground);
+  font-size: 15px;
+}
+.hero h1 {
+  font-size: clamp(40px, 5.2vw, 70px);
+  margin-top: 14px;
+}
+.hero-role {
+  margin-top: 20px;
+  font-size: clamp(17px, 1.8vw, 21px);
+  color: #c7d2e8;
+  font-weight: 500;
+}
 .hero-intro {
   color: #acb1be;
   line-height: 1.85;
   max-width: 460px;
-  margin-top: 25px;
+  margin-top: 16px;
   font-size: 15px;
-}
-.hero-intro strong {
-  color: #d8dae1;
-  font-weight: 500;
 }
 .hero-actions {
   display: flex;
