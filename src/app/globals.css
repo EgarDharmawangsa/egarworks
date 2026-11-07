@@ -137,6 +137,34 @@ button:focus-visible {
   padding-top: 90px;
   padding-bottom: 104px;
 }
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 1.8px;
+  color: #969aaa;
+}
+.hero .eyebrow {
+  display: inline-flex;
+  letter-spacing: 0.4px;
+  font-size: 11px;
+  padding: 7px 11px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: #121419;
+  color: #bcc0cc;
+}
+.status-dot {
+  width: 6px;
+  height: 6px;
+  display: inline-block;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: #79b79a;
+  box-shadow: 0 0 0 3px #79b79a12;
+}
 h1,
 h2,
 h3,
@@ -148,6 +176,7 @@ h1 {
   line-height: 1.12;
   font-weight: 600;
   letter-spacing: -2.8px;
+  margin-top: 25px;
 }
 .muted-heading {
   color: #858895;
@@ -187,6 +216,41 @@ h1 {
   box-shadow: 0 18px 65px #0003;
   transform: rotate(2deg);
 }
+.portrait-topline {
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 12px;
+  font-size: 8px;
+  color: #9a9eac;
+  font-family: monospace;
+}
+.window-dots {
+  display: flex;
+  gap: 4px;
+}
+.window-dots i {
+  width: 5px;
+  height: 5px;
+  border-radius: 100%;
+  background: #50535e;
+}
+.window-dots i:first-child {
+  background: #8f6064;
+}
+.window-dots i:nth-child(2) {
+  background: #92845d;
+}
+.window-dots i:last-child {
+  background: #5c826d;
+}
+.tiny-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #71a68a;
+}
 .portrait-image {
   aspect-ratio: 1.12;
   overflow: hidden;
@@ -199,6 +263,30 @@ h1 {
   object-position: center 35%;
   filter: saturate(0.6);
 }
+.portrait-note {
+  position: absolute;
+  bottom: 5px;
+  left: -22px;
+  background: #181b21;
+  border: 1px solid #343741;
+  border-radius: 8px;
+  padding: 13px 18px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  font-size: 10px;
+  box-shadow: 0 8px 30px #0005;
+}
+.scroll-hint {
+  position: absolute;
+  left: 0;
+  bottom: 28px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 10px;
+  color: #9296a3;
+}
 #about {
   border-top: 1px solid var(--border);
 }
@@ -210,6 +298,7 @@ h2 {
   line-height: 1.25;
   letter-spacing: -1.3px;
   font-weight: 550;
+  margin-top: 15px;
 }
 .heading-row {
   display: flex;
@@ -264,8 +353,15 @@ h2 {
   color: #9aadd2;
   margin-bottom: 16px;
 }
+.detail div > span {
+  display: block;
+  font-size: 8px;
+  letter-spacing: 1.1px;
+  color: #9499a8;
+  margin-bottom: 7px;
+}
 .detail strong {
-  font-size: 13px;
+  font-size: 11px;
   font-weight: 500;
 }
 .skills-grid {
@@ -300,6 +396,14 @@ h3 {
 }
 .skill-item span {
   line-height: 1.5;
+}
+.count-badge {
+  border: 1px solid var(--border);
+  padding: 7px 11px;
+  border-radius: 6px;
+  font-size: 10px;
+  color: #a8adba;
+  font-family: monospace;
 }
 .projects-grid {
   display: grid;
@@ -368,6 +472,14 @@ h3 {
   background-size: 24px 24px;
   pointer-events: none;
 }
+.project-preview-type {
+  position: absolute;
+  left: 18px;
+  top: 17px;
+  letter-spacing: 1.2px;
+  font-size: 7px;
+  color: #9ba1b3;
+}
 .project-emblem {
   color: var(--preview);
   border: 1px solid color-mix(in srgb, var(--preview) 25%, transparent);
@@ -377,6 +489,14 @@ h3 {
   border-radius: 16px;
   display: grid;
   place-items: center;
+}
+.project-index {
+  position: absolute;
+  right: 15px;
+  bottom: 14px;
+  font-size: 9px;
+  color: #71798f;
+  font-family: monospace;
 }
 .project-image {
   object-fit: cover;
@@ -701,8 +821,14 @@ h3 {
     width: min(390px, 90%);
     margin-inline: auto;
   }
+  .portrait-note {
+    left: -12px;
+  }
   .portrait-image {
     aspect-ratio: 1.2;
+  }
+  .scroll-hint {
+    bottom: 24px;
   }
   .section {
     padding-block: 65px;
@@ -722,6 +848,12 @@ h3 {
     align-items: start;
     flex-direction: column;
     gap: 17px;
+  }
+  .heading-row .count-badge {
+    align-self: flex-start;
+  }
+  .desktop-break {
+    display: none;
   }
   .skills-grid {
     gap: 12px;
@@ -780,9 +912,15 @@ h3 {
   .about-details {
     gap: 10px;
   }
+  .detail strong {
+    font-size: 10px;
+  }
   .email-link {
     font-size: 11px;
     gap: 8px;
+  }
+  .eyebrow {
+    font-size: 9px;
   }
 }
 @media (prefers-reduced-motion: reduce) {

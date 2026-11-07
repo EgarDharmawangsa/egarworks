@@ -3,6 +3,7 @@ export default function About() {
   return (
     <section className="shell section" id="about">
       <div className="section-heading">
+        <span className="eyebrow">01 / ABOUT ME</span>
         <h2>
           A little about
           <br />
@@ -12,9 +13,9 @@ export default function About() {
       <div className="about-grid">
         <div className="about-copy">
           <p>
-            I’m Egar, a graduate of <strong>ITB STIKOM Bali</strong> with a
-            strong interest in full-stack web development. I enjoy connecting
-            good design with reliable code to build things that are useful.
+            I enjoy connecting good design with reliable code to build things
+            that are useful, with a focus on functional, intuitive web
+            applications.
           </p>
           <p>
             My experience includes building web applications with Laravel,
@@ -47,6 +48,7 @@ export default function About() {
                 <Icon size={19} />
               </span>
               <div>
+                <span>{label}</span>
                 <strong>{value}</strong>
               </div>
             </div>

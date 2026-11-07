@@ -15,10 +15,16 @@ export default function Skills() {
       <div className="shell section">
         <div className="section-heading heading-row">
           <div>
+            <span className="eyebrow">02 / MY TOOLKIT</span>
             <h2>
               The tools I build with<span className="blue-dot">.</span>
             </h2>
           </div>
+          <p>
+            A practical stack for bringing ideas
+            <br className="desktop-break" /> from the first pixel to the
+            database.
+          </p>
         </div>
         <div className="skills-grid">
           {categories.map((category) => (
